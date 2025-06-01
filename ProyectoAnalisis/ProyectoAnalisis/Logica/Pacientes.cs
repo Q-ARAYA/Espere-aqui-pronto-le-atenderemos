@@ -8,7 +8,7 @@ namespace ProyectoAnalisis.Logica
 {
     public class Pacientes
     {
-        public Pacientes(string nombre, string especialidad, int prioridad)
+        public Pacientes(string nombre, Especialidades especialidad, int prioridad)
         {
             Nombre = nombre;
             Especialidad = especialidad;
@@ -18,7 +18,7 @@ namespace ProyectoAnalisis.Logica
         public string Nombre { 
             get; set; 
         }
-        public string Especialidad { 
+        public Especialidades Especialidad { 
             get; set; 
         }
         public int Prioridad { 
