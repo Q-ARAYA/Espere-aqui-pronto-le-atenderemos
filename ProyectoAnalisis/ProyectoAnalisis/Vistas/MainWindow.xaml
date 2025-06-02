@@ -6,7 +6,22 @@
         xmlns:local="clr-namespace:ProyectoAnalisis.Vistas"
         mc:Ignorable="d"
         Title="MainWindow" Height="750" Width="1440" Background="#FF345C83">
+<<<<<<< HEAD
     <Border BorderBrush="#FF6AA169" BorderThickness="1" HorizontalAlignment="Center" Height="213" Margin="0,527,0,0" VerticalAlignment="Top" Width="1440" Background="#FF6AA169">
         <Border BorderThickness="1" HorizontalAlignment="Center" Height="91" VerticalAlignment="Center" Width="1440" Background="#FFB7B7B7"/>
     </Border>
+=======
+
+    <Grid>
+        <!-- Fondo ya existente -->
+        <Border BorderBrush="#FF6AA169" BorderThickness="1" HorizontalAlignment="Center" Height="213" Margin="0,527,0,0" VerticalAlignment="Top" Width="1440" Background="#FF6AA169">
+            <Border BorderThickness="1" HorizontalAlignment="Center" Height="91" VerticalAlignment="Center" Width="1440" Background="#FFB7B7B7"/>
+        </Border>
+
+        <!-- Panel dinámico donde se colocarán los cuadros de consultorios -->
+        <WrapPanel x:Name="PanelConsultorios" Margin="10" Orientation="Horizontal" />
+
+        <WrapPanel x:Name="PanelPacientes" Margin="20,250,20,100" />
+    </Grid>
+>>>>>>> 2897cef (Conexion de interfaz y backend)
 </Window>
