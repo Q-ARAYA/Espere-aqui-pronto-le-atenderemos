@@ -46,7 +46,7 @@ namespace ProyectoAnalisis.LogicaVistas
                     Stroke = Brushes.Black,
                     StrokeThickness = 1,
                     Margin = new System.Windows.Thickness(5),
-                    ToolTip = $"{paciente.Nombre} - Prioridad: {paciente.Prioridad}"
+                    ToolTip = $"{paciente.Nombre} - Revisión de: {paciente.Especialidad.Nombre}"
                 };
                 panel.Children.Add(circulo);
             }
