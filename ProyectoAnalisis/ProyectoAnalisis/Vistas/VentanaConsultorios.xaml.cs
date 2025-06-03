@@ -19,7 +19,7 @@ using System.Windows.Controls;
 
 namespace ProyectoAnalisis.Vistas
 {
-    public partial class MainWindow : Window
+    public partial class VentanaConsultorios : Window
     {
         public MainWindow()
         {
