@@ -21,7 +21,7 @@ namespace ProyectoAnalisis.Vistas
 {
     public partial class VentanaConsultorios : Window
     {
-        public MainWindow()
+        public VentanaConsultorios()
         {
             InitializeComponent();
             CargarConsultorios(); // Aquí llamas la lógica para crear los cuadros
