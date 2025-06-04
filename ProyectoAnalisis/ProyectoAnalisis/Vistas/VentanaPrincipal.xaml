@@ -1,4 +1,4 @@
-<Window x:Class="ProyectoAnalisis.Vistas.VentanaConsultorios"
+<Window x:Class="ProyectoAnalisis.Vistas.VentanaPrincipal"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Consultorios" Height="750" Width="1440" Background="#3B5C7E">
@@ -28,7 +28,8 @@
 
         <!-- Consultorios (cabecera) -->
         <UniformGrid Rows="1" Columns="15" Margin="30,80,30,0" Height="60" VerticalAlignment="Top">
-            <Border Background="White" CornerRadius="10" Margin="5" Padding="10">
+            <Border Background="White" CornerRadius="10" Margin="5" Padding="10"
+                    MouseLeftButtonUp="Consultorio_Click">
                 <TextBlock Text="Consultorio" FontWeight="Bold" HorizontalAlignment="Center"/>
             </Border>
             <Border Background="White" CornerRadius="10" Margin="5" Padding="10">

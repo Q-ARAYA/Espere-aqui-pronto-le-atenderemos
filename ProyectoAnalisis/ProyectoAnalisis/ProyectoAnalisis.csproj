@@ -66,8 +66,11 @@
     <Compile Include="Logica\Especialidades.cs" />
     <Compile Include="Logica\GestorDatos.cs" />
     <Compile Include="Logica\Pacientes.cs" />
-    <Compile Include="Vistas\VentanaConsultorios.xaml.cs">
-      <DependentUpon>VentanaConsultorios.xaml</DependentUpon>
+    <Compile Include="Vistas\VentanaConsultorio.xaml.cs">
+      <DependentUpon>VentanaConsultorio.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\VentanaPrincipal.xaml.cs">
+      <DependentUpon>VentanaPrincipal.xaml</DependentUpon>
     </Compile>
     <Compile Include="Vistas\VentanaEspecialidades.xaml.cs">
       <DependentUpon>VentanaEspecialidades.xaml</DependentUpon>
@@ -101,7 +104,10 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Page Include="Vistas\VentanaConsultorios.xaml">
+    <Page Include="Vistas\VentanaConsultorio.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vistas\VentanaPrincipal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
