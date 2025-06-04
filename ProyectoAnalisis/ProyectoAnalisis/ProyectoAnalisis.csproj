@@ -64,12 +64,13 @@
     <Compile Include="LogicaVistas\LogicaVistaMain.cs" />
     <Compile Include="Logica\Consultorios.cs" />
     <Compile Include="Logica\Especialidades.cs" />
+    <Compile Include="Logica\GestorDatos.cs" />
     <Compile Include="Logica\Pacientes.cs" />
-    <Compile Include="Vistas\MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Vistas\VentanaConsultorios.xaml.cs">
       <DependentUpon>VentanaConsultorios.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\VentanaEspecialidades.xaml.cs">
+      <DependentUpon>VentanaEspecialidades.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -100,12 +101,11 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Page Include="Vistas\MainWindow.xaml">
+    <Page Include="Vistas\VentanaConsultorios.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Vistas\VentanaConsultorios.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="Vistas\VentanaEspecialidades.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>

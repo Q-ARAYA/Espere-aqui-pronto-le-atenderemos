@@ -14,3 +14,20 @@ C:\Users\david\OneDrive\Escritorio\Espere-aqui-pronto-le-atenderemos#\ProyectoAn
 C:\Users\david\OneDrive\Escritorio\Espere-aqui-pronto-le-atenderemos#\ProyectoAnalisis\ProyectoAnalisis\obj\Debug\ProyectoAnalisis.exe.config
 C:\Users\david\OneDrive\Escritorio\Espere-aqui-pronto-le-atenderemos#\ProyectoAnalisis\ProyectoAnalisis\obj\Debug\Vistas\MainWindow.g.cs
 C:\Users\david\OneDrive\Escritorio\Espere-aqui-pronto-le-atenderemos#\ProyectoAnalisis\ProyectoAnalisis\obj\Debug\Vistas\MainWindow.baml
+D:\Archivos\Documentos\TEC\2025 Semestre I\Analisis\PY2 AG\Espere-aqui-pronto-le-atenderemos\ProyectoAnalisis\ProyectoAnalisis\bin\Debug\ProyectoAnalisis.exe.config
+D:\Archivos\Documentos\TEC\2025 Semestre I\Analisis\PY2 AG\Espere-aqui-pronto-le-atenderemos\ProyectoAnalisis\ProyectoAnalisis\bin\Debug\ProyectoAnalisis.exe
+D:\Archivos\Documentos\TEC\2025 Semestre I\Analisis\PY2 AG\Espere-aqui-pronto-le-atenderemos\ProyectoAnalisis\ProyectoAnalisis\bin\Debug\ProyectoAnalisis.pdb
+D:\Archivos\Documentos\TEC\2025 Semestre I\Analisis\PY2 AG\Espere-aqui-pronto-le-atenderemos\ProyectoAnalisis\ProyectoAnalisis\obj\Debug\ProyectoAnalisis.csproj.AssemblyReference.cache
+D:\Archivos\Documentos\TEC\2025 Semestre I\Analisis\PY2 AG\Espere-aqui-pronto-le-atenderemos\ProyectoAnalisis\ProyectoAnalisis\obj\Debug\ProyectoAnalisis.exe.config
+D:\Archivos\Documentos\TEC\2025 Semestre I\Analisis\PY2 AG\Espere-aqui-pronto-le-atenderemos\ProyectoAnalisis\ProyectoAnalisis\obj\Debug\Vistas\VentanaConsultorios.g.cs
+D:\Archivos\Documentos\TEC\2025 Semestre I\Analisis\PY2 AG\Espere-aqui-pronto-le-atenderemos\ProyectoAnalisis\ProyectoAnalisis\obj\Debug\App.g.cs
+D:\Archivos\Documentos\TEC\2025 Semestre I\Analisis\PY2 AG\Espere-aqui-pronto-le-atenderemos\ProyectoAnalisis\ProyectoAnalisis\obj\Debug\ProyectoAnalisis_MarkupCompile.cache
+D:\Archivos\Documentos\TEC\2025 Semestre I\Analisis\PY2 AG\Espere-aqui-pronto-le-atenderemos\ProyectoAnalisis\ProyectoAnalisis\obj\Debug\Vistas\VentanaConsultorios.baml
+D:\Archivos\Documentos\TEC\2025 Semestre I\Analisis\PY2 AG\Espere-aqui-pronto-le-atenderemos\ProyectoAnalisis\ProyectoAnalisis\obj\Debug\ProyectoAnalisis.g.resources
+D:\Archivos\Documentos\TEC\2025 Semestre I\Analisis\PY2 AG\Espere-aqui-pronto-le-atenderemos\ProyectoAnalisis\ProyectoAnalisis\obj\Debug\ProyectoAnalisis.Properties.Resources.resources
+D:\Archivos\Documentos\TEC\2025 Semestre I\Analisis\PY2 AG\Espere-aqui-pronto-le-atenderemos\ProyectoAnalisis\ProyectoAnalisis\obj\Debug\ProyectoAnalisis.csproj.GenerateResource.cache
+D:\Archivos\Documentos\TEC\2025 Semestre I\Analisis\PY2 AG\Espere-aqui-pronto-le-atenderemos\ProyectoAnalisis\ProyectoAnalisis\obj\Debug\ProyectoAnalisis.csproj.CoreCompileInputs.cache
+D:\Archivos\Documentos\TEC\2025 Semestre I\Analisis\PY2 AG\Espere-aqui-pronto-le-atenderemos\ProyectoAnalisis\ProyectoAnalisis\obj\Debug\ProyectoAnalisis.exe
+D:\Archivos\Documentos\TEC\2025 Semestre I\Analisis\PY2 AG\Espere-aqui-pronto-le-atenderemos\ProyectoAnalisis\ProyectoAnalisis\obj\Debug\ProyectoAnalisis.pdb
+D:\Archivos\Documentos\TEC\2025 Semestre I\Analisis\PY2 AG\Espere-aqui-pronto-le-atenderemos\ProyectoAnalisis\ProyectoAnalisis\obj\Debug\Vistas\VentanaEspecialidades.baml
+D:\Archivos\Documentos\TEC\2025 Semestre I\Analisis\PY2 AG\Espere-aqui-pronto-le-atenderemos\ProyectoAnalisis\ProyectoAnalisis\obj\Debug\Vistas\VentanaEspecialidades.g.cs

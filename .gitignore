@@ -1,0 +1,21 @@
+# Archivos de compilación y dependencias
+bin/
+obj/
+
+# Archivos de configuración del entorno de desarrollo
+.vs/
+*.user
+*.suo
+
+# Archivos temporales
+*.tmp
+*.log
+
+# Archivos generados de compilación WPF
+*.g.cs
+*.g.i.cs
+*.baml
+
+# Otros
+*.pdb
+*.cache
