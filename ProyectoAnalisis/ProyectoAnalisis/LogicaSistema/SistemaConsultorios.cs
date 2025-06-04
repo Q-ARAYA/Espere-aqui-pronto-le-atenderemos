@@ -16,7 +16,10 @@ namespace ProyectoAnalisis.LogicaSistema
             public void AgregarConsultorio(string nombre)
             {
                 if (Consultorios.Count < 15)
-                    Consultorios.Add(new Consultorios(nombre, true));
+                {
+                    int numeroConsultorio = Consultorios.Count + 1;
+                    Consultorios.Add(new Consultorios(numeroConsultorio, nombre, true));
+                }
             }
 
             public void CerrarConsultorio(string nombre)

@@ -34,8 +34,11 @@ namespace ProyectoAnalisis.Vistas
 
         private void Consultorio_Click(object sender, MouseButtonEventArgs e)
         {
-            var ventana = new VentanaConsultorio();
-            ventana.ShowDialog();
+            if (sender is Border border && border.Tag is string tag && int.TryParse(tag, out int numeroConsultorio))
+            {
+                var ventana = new VentanaConsultorio(numeroConsultorio);
+                ventana.ShowDialog();
+            }
         }
     }
 }

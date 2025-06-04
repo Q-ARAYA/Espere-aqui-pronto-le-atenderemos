@@ -29,50 +29,63 @@
         <!-- Consultorios (cabecera) -->
         <UniformGrid Rows="1" Columns="15" Margin="30,80,30,0" Height="60" VerticalAlignment="Top">
             <Border Background="White" CornerRadius="10" Margin="5" Padding="10"
-                    MouseLeftButtonUp="Consultorio_Click">
+                    MouseLeftButtonUp="Consultorio_Click" Tag="1">
                 <TextBlock Text="Consultorio" FontWeight="Bold" HorizontalAlignment="Center"/>
             </Border>
-            <Border Background="White" CornerRadius="10" Margin="5" Padding="10">
+            <Border Background="White" CornerRadius="10" Margin="5" Padding="10"
+                    MouseLeftButtonUp="Consultorio_Click" Tag="2">
                 <TextBlock Text="Consultorio" FontWeight="Bold" HorizontalAlignment="Center"/>
             </Border>
-            <!-- Repite este Border hasta tener 15 consultorios -->
-            <Border Background="White" CornerRadius="10" Margin="5" Padding="10">
+            <Border Background="White" CornerRadius="10" Margin="5" Padding="10"
+                    MouseLeftButtonUp="Consultorio_Click" Tag="3">
                 <TextBlock Text="Consultorio" FontWeight="Bold" HorizontalAlignment="Center"/>
             </Border>
-            <Border Background="White" CornerRadius="10" Margin="5" Padding="10">
+            <Border Background="White" CornerRadius="10" Margin="5" Padding="10"
+                    MouseLeftButtonUp="Consultorio_Click" Tag="4">
                 <TextBlock Text="Consultorio" FontWeight="Bold" HorizontalAlignment="Center"/>
             </Border>
-            <Border Background="White" CornerRadius="10" Margin="5" Padding="10">
+            <Border Background="White" CornerRadius="10" Margin="5" Padding="10"
+                    MouseLeftButtonUp="Consultorio_Click" Tag="5">
                 <TextBlock Text="Consultorio" FontWeight="Bold" HorizontalAlignment="Center"/>
             </Border>
-            <Border Background="White" CornerRadius="10" Margin="5" Padding="10">
+            <Border Background="White" CornerRadius="10" Margin="5" Padding="10"
+                    MouseLeftButtonUp="Consultorio_Click" Tag="6">
                 <TextBlock Text="Consultorio" FontWeight="Bold" HorizontalAlignment="Center"/>
             </Border>
-            <Border Background="White" CornerRadius="10" Margin="5" Padding="10">
+            <Border Background="White" CornerRadius="10" Margin="5" Padding="10"
+                    MouseLeftButtonUp="Consultorio_Click" Tag="7">
                 <TextBlock Text="Consultorio" FontWeight="Bold" HorizontalAlignment="Center"/>
             </Border>
-            <Border Background="White" CornerRadius="10" Margin="5" Padding="10">
+            <Border Background="White" CornerRadius="10" Margin="5" Padding="10"
+                    MouseLeftButtonUp="Consultorio_Click" Tag="8">
                 <TextBlock Text="Consultorio" FontWeight="Bold" HorizontalAlignment="Center"/>
             </Border>
-            <Border Background="White" CornerRadius="10" Margin="5" Padding="10">
+            <Border Background="White" CornerRadius="10" Margin="5" Padding="10"
+                    MouseLeftButtonUp="Consultorio_Click" Tag="9">
                 <TextBlock Text="Consultorio" FontWeight="Bold" HorizontalAlignment="Center"/>
             </Border>
-            <Border Background="White" CornerRadius="10" Margin="5" Padding="10">
+            <Border Background="White" CornerRadius="10" Margin="5" Padding="10"
+                    MouseLeftButtonUp="Consultorio_Click" Tag="10">
                 <TextBlock Text="Consultorio" FontWeight="Bold" HorizontalAlignment="Center"/>
             </Border>
-            <Border Background="White" CornerRadius="10" Margin="5" Padding="10">
+            <Border Background="White" CornerRadius="10" Margin="5" Padding="10"
+                    MouseLeftButtonUp="Consultorio_Click" Tag="11">
                 <TextBlock Text="Consultorio" FontWeight="Bold" HorizontalAlignment="Center"/>
             </Border>
-            <Border Background="White" CornerRadius="10" Margin="5" Padding="10">
+            <Border Background="White" CornerRadius="10" Margin="5" Padding="10"
+                    MouseLeftButtonUp="Consultorio_Click" Tag="12">
                 <TextBlock Text="Consultorio" FontWeight="Bold" HorizontalAlignment="Center"/>
             </Border>
-            <Border Background="White" CornerRadius="10" Margin="5" Padding="10">
+            <Border Background="White" CornerRadius="10" Margin="5" Padding="10"
+                    MouseLeftButtonUp="Consultorio_Click" Tag="13">
                 <TextBlock Text="Consultorio" FontWeight="Bold" HorizontalAlignment="Center"/>
             </Border>
-            <Border Background="White" CornerRadius="10" Margin="5" Padding="10">
+            <Border Background="White" CornerRadius="10" Margin="5" Padding="10"
+                    MouseLeftButtonUp="Consultorio_Click" Tag="14">
                 <TextBlock Text="Consultorio" FontWeight="Bold" HorizontalAlignment="Center"/>
             </Border>
-            <Border Background="White" CornerRadius="10" Margin="5" Padding="10">
+            <Border Background="White" CornerRadius="10" Margin="5" Padding="10"
+                    MouseLeftButtonUp="Consultorio_Click" Tag="15">
                 <TextBlock Text="Consultorio" FontWeight="Bold" HorizontalAlignment="Center"/>
             </Border>
         </UniformGrid>

@@ -1,6 +1,7 @@
 // Archivo: LogicaVistas/LogicaVistaMain.cs
 using ProyectoAnalisis.Logica;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
@@ -9,6 +10,8 @@ namespace ProyectoAnalisis.LogicaVistas
 {
     public static class LogicaVistaMain
     {
+        private static List<Consultorios> listaDeConsultorios = new List<Consultorios>();
+
         /// <summary>
         /// Valida los datos y crea una nueva especialidad en la capa de lógica.
         /// </summary>
@@ -47,6 +50,53 @@ namespace ProyectoAnalisis.LogicaVistas
         public static List<Especialidades> CargarEspecialidades()
         {
             return GestorDatos.ObtenerEspecialidades();
+        }
+
+        /// <summary>
+        /// Crea y registra un consultorio si el número no existe.
+        /// </summary>
+        /// <param name="numeroConsultorio">Número identificador del consultorio.</param>
+        /// <param name="activo">Estado del consultorio.</param>
+        /// <param name="especialidades">Lista de especialidades asignadas.</param>
+        /// <returns>Mensaje de error si falla, o null si tiene éxito.</returns>
+        public static string CrearConsultorio(int numeroConsultorio, bool activo, List<Especialidades> especialidades)
+        {
+            var consultorio = listaDeConsultorios.FirstOrDefault(c => c.NumeroConsultorio == numeroConsultorio);
+
+            if (consultorio != null)
+            {
+                // Si ya existe, lo reactivamos y actualizamos especialidades
+                consultorio.Activo = true;
+                consultorio.Especialidades = especialidades;
+                return null; // No es error, se reactivó
+            }
+
+            // Si no existe, lo creamos normalmente
+            consultorio = new Consultorios(numeroConsultorio, $"Consultorio {numeroConsultorio}", activo)
+            {
+                Especialidades = especialidades
+            };
+
+            listaDeConsultorios.Add(consultorio);
+            return null;
+        }
+
+        public static void DesactivarConsultorio(int numeroConsultorio)
+        {
+            var consultorio = listaDeConsultorios.FirstOrDefault(c => c.NumeroConsultorio == numeroConsultorio);
+            if (consultorio != null)
+            {
+                consultorio.Activo = false;
+            }
+        }
+
+        /// <summary>
+        /// Obtiene la lista de consultorios registrados.
+        /// </summary>
+        /// <returns>Lista de consultorios.</returns>
+        public static List<Consultorios> ObtenerConsultorios()
+        {
+            return new List<Consultorios>(listaDeConsultorios);
         }
 
         public static void MostrarConsultorios(List<Consultorios> consultorios, WrapPanel panel)

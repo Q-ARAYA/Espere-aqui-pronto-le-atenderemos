@@ -1,27 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProyectoAnalisis.Logica
 {
     public class Consultorios
     {
-        public Consultorios(string nombre, bool activo)
+        public Consultorios(int numeroConsultorio, string nombre, bool activo)
         {
-            Nombre = nombre;
+            NumeroConsultorio = numeroConsultorio;
+            Nombre = $"Consultorio {numeroConsultorio}";
             Activo = activo;
         }
-        public string Nombre { 
-            get; set; 
-        }
-        public List<Especialidades> Especialidades { 
-            get; set; 
-        } = new List<Especialidades>(); 
-        
-        public bool Activo { 
-            get; set; 
-        }
+
+        public int NumeroConsultorio { get; set; }
+
+        public string Nombre { get; set; }
+
+        public List<Especialidades> Especialidades { get; set; } = new List<Especialidades>();
+
+        public bool Activo { get; set; }
     }
 }
