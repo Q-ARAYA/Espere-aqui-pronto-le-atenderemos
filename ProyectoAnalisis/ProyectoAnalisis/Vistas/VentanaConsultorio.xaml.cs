@@ -11,20 +11,36 @@ namespace ProyectoAnalisis.Vistas
         private bool activo = false;
         private int numeroConsultorio;
 
-        public VentanaConsultorio()
-        {
-            InitializeComponent();
-            ActualizarBoton();
-            CargarEspecialidades();
-            lstEspecialidades.SelectionChanged += LstEspecialidades_SelectionChanged;
-        }
-
         public VentanaConsultorio(int numeroConsultorio)
         {
             InitializeComponent();
             this.numeroConsultorio = numeroConsultorio;
+
+            // Buscar si ya existe el consultorio
+            var consultorio = LogicaVistaMain.ObtenerConsultorios()
+                .FirstOrDefault(c => c.NumeroConsultorio == numeroConsultorio);
+
+            if (consultorio != null)
+            {
+                activo = consultorio.Activo;
+                // Si quieres también mostrar las especialidades ya asignadas:
+                var lista = LogicaVistaMain.CargarEspecialidades();
+                lstEspecialidades.ItemsSource = lista.Select(esp => $"{esp.Nombre} - {esp.Duracion} min").ToList();
+
+                // Selecciona las especialidades ya asignadas
+                foreach (var esp in consultorio.Especialidades)
+                {
+                    var item = $"{esp.Nombre} - {esp.Duracion} min";
+                    lstEspecialidades.SelectedItems.Add(item);
+                }
+            }
+            else
+            {
+                activo = false;
+                CargarEspecialidades();
+            }
+
             ActualizarBoton();
-            CargarEspecialidades();
             lstEspecialidades.SelectionChanged += LstEspecialidades_SelectionChanged;
         }
 
