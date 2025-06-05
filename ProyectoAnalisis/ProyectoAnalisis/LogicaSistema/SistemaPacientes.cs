@@ -34,7 +34,7 @@ namespace ProyectoAnalisis.LogicaSistema
             while (PacientesEnCola.Count > 0)
             {
                 var actual = PacientesEnCola.Dequeue();
-                if (!(actual.Nombre == paciente.Nombre && actual.Especialidad == paciente.Especialidad && actual.Prioridad == paciente.Prioridad))
+                if (!(actual.Nombre == paciente.Nombre && actual.Especialidad == paciente.Especialidad))
                 {
                     nuevaCola.Enqueue(actual);
                 }

@@ -46,7 +46,7 @@ namespace ProyectoAnalisis.Vistas
             }
 
             // Usa el controlador para crear el paciente
-            var resultado = LogicaVistaMain.CrearPaciente(nombre, especialidad, 1);
+            var resultado = LogicaVistaMain.CrearPaciente(nombre, especialidad);
 
             System.Diagnostics.Debug.WriteLine($"Paciente creado: {nombre}, Especialidad: {especialidad.Nombre}, Duración: {especialidad.Duracion}");
 

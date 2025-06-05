@@ -4,7 +4,6 @@ C:\Users\david\OneDrive\Escritorio\Espere-aqui-pronto-le-atenderemos#\ProyectoAn
 C:\Users\david\OneDrive\Escritorio\Espere-aqui-pronto-le-atenderemos#\ProyectoAnalisis\ProyectoAnalisis\obj\Debug\ProyectoAnalisis.csproj.AssemblyReference.cache
 C:\Users\david\OneDrive\Escritorio\Espere-aqui-pronto-le-atenderemos#\ProyectoAnalisis\ProyectoAnalisis\obj\Debug\App.g.cs
 C:\Users\david\OneDrive\Escritorio\Espere-aqui-pronto-le-atenderemos#\ProyectoAnalisis\ProyectoAnalisis\obj\Debug\ProyectoAnalisis_MarkupCompile.cache
-C:\Users\david\OneDrive\Escritorio\Espere-aqui-pronto-le-atenderemos#\ProyectoAnalisis\ProyectoAnalisis\obj\Debug\ProyectoAnalisis_MarkupCompile.lref
 C:\Users\david\OneDrive\Escritorio\Espere-aqui-pronto-le-atenderemos#\ProyectoAnalisis\ProyectoAnalisis\obj\Debug\ProyectoAnalisis.g.resources
 C:\Users\david\OneDrive\Escritorio\Espere-aqui-pronto-le-atenderemos#\ProyectoAnalisis\ProyectoAnalisis\obj\Debug\ProyectoAnalisis.Properties.Resources.resources
 C:\Users\david\OneDrive\Escritorio\Espere-aqui-pronto-le-atenderemos#\ProyectoAnalisis\ProyectoAnalisis\obj\Debug\ProyectoAnalisis.csproj.GenerateResource.cache
@@ -12,8 +11,6 @@ C:\Users\david\OneDrive\Escritorio\Espere-aqui-pronto-le-atenderemos#\ProyectoAn
 C:\Users\david\OneDrive\Escritorio\Espere-aqui-pronto-le-atenderemos#\ProyectoAnalisis\ProyectoAnalisis\obj\Debug\ProyectoAnalisis.exe
 C:\Users\david\OneDrive\Escritorio\Espere-aqui-pronto-le-atenderemos#\ProyectoAnalisis\ProyectoAnalisis\obj\Debug\ProyectoAnalisis.pdb
 C:\Users\david\OneDrive\Escritorio\Espere-aqui-pronto-le-atenderemos#\ProyectoAnalisis\ProyectoAnalisis\obj\Debug\ProyectoAnalisis.exe.config
-C:\Users\david\OneDrive\Escritorio\Espere-aqui-pronto-le-atenderemos#\ProyectoAnalisis\ProyectoAnalisis\obj\Debug\Vistas\MainWindow.g.cs
-C:\Users\david\OneDrive\Escritorio\Espere-aqui-pronto-le-atenderemos#\ProyectoAnalisis\ProyectoAnalisis\obj\Debug\Vistas\MainWindow.baml
 D:\Archivos\Documentos\TEC\2025 Semestre I\Analisis\PY2 AG\Espere-aqui-pronto-le-atenderemos\ProyectoAnalisis\ProyectoAnalisis\bin\Debug\ProyectoAnalisis.exe.config
 D:\Archivos\Documentos\TEC\2025 Semestre I\Analisis\PY2 AG\Espere-aqui-pronto-le-atenderemos\ProyectoAnalisis\ProyectoAnalisis\bin\Debug\ProyectoAnalisis.exe
 D:\Archivos\Documentos\TEC\2025 Semestre I\Analisis\PY2 AG\Espere-aqui-pronto-le-atenderemos\ProyectoAnalisis\ProyectoAnalisis\bin\Debug\ProyectoAnalisis.pdb
@@ -35,3 +32,11 @@ D:\Archivos\Documentos\TEC\2025 Semestre I\Analisis\PY2 AG\Espere-aqui-pronto-le
 D:\Archivos\Documentos\TEC\2025 Semestre I\Analisis\PY2 AG\Espere-aqui-pronto-le-atenderemos\ProyectoAnalisis\ProyectoAnalisis\obj\Debug\Vistas\VentanaPrincipal.g.cs
 D:\Archivos\Documentos\TEC\2025 Semestre I\Analisis\PY2 AG\Espere-aqui-pronto-le-atenderemos\ProyectoAnalisis\ProyectoAnalisis\obj\Debug\Vistas\VentanaPaciente.baml
 D:\Archivos\Documentos\TEC\2025 Semestre I\Analisis\PY2 AG\Espere-aqui-pronto-le-atenderemos\ProyectoAnalisis\ProyectoAnalisis\obj\Debug\Vistas\VentanaPaciente.g.cs
+C:\Users\david\OneDrive\Escritorio\Espere-aqui-pronto-le-atenderemos#\ProyectoAnalisis\ProyectoAnalisis\obj\Debug\Vistas\VentanaConsultorio.baml
+C:\Users\david\OneDrive\Escritorio\Espere-aqui-pronto-le-atenderemos#\ProyectoAnalisis\ProyectoAnalisis\obj\Debug\Vistas\VentanaPaciente.baml
+C:\Users\david\OneDrive\Escritorio\Espere-aqui-pronto-le-atenderemos#\ProyectoAnalisis\ProyectoAnalisis\obj\Debug\Vistas\VentanaPrincipal.baml
+C:\Users\david\OneDrive\Escritorio\Espere-aqui-pronto-le-atenderemos#\ProyectoAnalisis\ProyectoAnalisis\obj\Debug\Vistas\VentanaEspecialidades.baml
+C:\Users\david\OneDrive\Escritorio\Espere-aqui-pronto-le-atenderemos#\ProyectoAnalisis\ProyectoAnalisis\obj\Debug\Vistas\VentanaConsultorio.g.cs
+C:\Users\david\OneDrive\Escritorio\Espere-aqui-pronto-le-atenderemos#\ProyectoAnalisis\ProyectoAnalisis\obj\Debug\Vistas\VentanaPaciente.g.cs
+C:\Users\david\OneDrive\Escritorio\Espere-aqui-pronto-le-atenderemos#\ProyectoAnalisis\ProyectoAnalisis\obj\Debug\Vistas\VentanaPrincipal.g.cs
+C:\Users\david\OneDrive\Escritorio\Espere-aqui-pronto-le-atenderemos#\ProyectoAnalisis\ProyectoAnalisis\obj\Debug\Vistas\VentanaEspecialidades.g.cs

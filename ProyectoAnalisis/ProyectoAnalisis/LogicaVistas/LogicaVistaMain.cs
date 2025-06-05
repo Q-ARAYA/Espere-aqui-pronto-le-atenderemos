@@ -151,14 +151,14 @@ namespace ProyectoAnalisis.LogicaVistas
         /// <param name="especialidad">Especialidad asignada.</param>
         /// <param name="prioridad">Prioridad del paciente.</param>
         /// <returns>Mensaje de error si falla, o null si tiene éxito.</returns>
-        public static string CrearPaciente(string nombre, Especialidades especialidad, int prioridad)
+        public static string CrearPaciente(string nombre, Especialidades especialidad)
         {
             if (string.IsNullOrWhiteSpace(nombre))
                 return "El nombre del paciente no puede estar vacío.";
             if (especialidad == null)
                 return "Debe seleccionar una especialidad.";
 
-            var paciente = new Pacientes(nombre, especialidad, prioridad);
+            var paciente = new Pacientes(nombre, especialidad);
             listaDePacientes.Add(paciente);
             return null;
         }
