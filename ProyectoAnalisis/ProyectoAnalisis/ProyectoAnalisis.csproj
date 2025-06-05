@@ -69,6 +69,9 @@
     <Compile Include="Vistas\VentanaConsultorio.xaml.cs">
       <DependentUpon>VentanaConsultorio.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Vistas\VentanaPaciente.xaml.cs">
+      <DependentUpon>VentanaPaciente.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Vistas\VentanaPrincipal.xaml.cs">
       <DependentUpon>VentanaPrincipal.xaml</DependentUpon>
     </Compile>
@@ -105,6 +108,9 @@
   <ItemGroup />
   <ItemGroup>
     <Page Include="Vistas\VentanaConsultorio.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vistas\VentanaPaciente.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Vistas\VentanaPrincipal.xaml">

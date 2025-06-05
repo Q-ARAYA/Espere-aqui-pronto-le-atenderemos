@@ -28,6 +28,7 @@ namespace ProyectoAnalisis.Vistas
 
         private void btnEspecialidades_Click(object sender, RoutedEventArgs e)
         {
+            System.Diagnostics.Debug.WriteLine($"David te odioooo");
             var ventana = new VentanaEspecialidades();
             ventana.ShowDialog();
         }
@@ -39,6 +40,12 @@ namespace ProyectoAnalisis.Vistas
                 var ventana = new VentanaConsultorio(numeroConsultorio);
                 ventana.ShowDialog();
             }
+        }
+
+        private void btnPacientes_Click(object sender, RoutedEventArgs e)
+        {
+            var ventana = new VentanaPaciente();
+            ventana.ShowDialog();
         }
     }
 }

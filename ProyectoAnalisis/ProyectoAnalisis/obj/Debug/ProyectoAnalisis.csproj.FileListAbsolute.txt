@@ -33,3 +33,5 @@ D:\Archivos\Documentos\TEC\2025 Semestre I\Analisis\PY2 AG\Espere-aqui-pronto-le
 D:\Archivos\Documentos\TEC\2025 Semestre I\Analisis\PY2 AG\Espere-aqui-pronto-le-atenderemos\ProyectoAnalisis\ProyectoAnalisis\obj\Debug\Vistas\VentanaPrincipal.baml
 D:\Archivos\Documentos\TEC\2025 Semestre I\Analisis\PY2 AG\Espere-aqui-pronto-le-atenderemos\ProyectoAnalisis\ProyectoAnalisis\obj\Debug\Vistas\VentanaConsultorio.g.cs
 D:\Archivos\Documentos\TEC\2025 Semestre I\Analisis\PY2 AG\Espere-aqui-pronto-le-atenderemos\ProyectoAnalisis\ProyectoAnalisis\obj\Debug\Vistas\VentanaPrincipal.g.cs
+D:\Archivos\Documentos\TEC\2025 Semestre I\Analisis\PY2 AG\Espere-aqui-pronto-le-atenderemos\ProyectoAnalisis\ProyectoAnalisis\obj\Debug\Vistas\VentanaPaciente.baml
+D:\Archivos\Documentos\TEC\2025 Semestre I\Analisis\PY2 AG\Espere-aqui-pronto-le-atenderemos\ProyectoAnalisis\ProyectoAnalisis\obj\Debug\Vistas\VentanaPaciente.g.cs
