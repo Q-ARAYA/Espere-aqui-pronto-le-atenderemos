@@ -52,8 +52,22 @@ namespace ProyectoAnalisis.Vistas
 
         private void btnActivar_Click(object sender, RoutedEventArgs e)
         {
+            if (!activo)
+            {
+                if (lstEspecialidades.SelectedItems.Count == 0)
+                {
+                    MessageBox.Show("Debe seleccionar al menos una especialidad para activar el consultorio.", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+            }
+
             activo = !activo;
             ActualizarBoton();
+
+            if (Owner is VentanaPrincipal ventanaPrincipal)
+            {
+                ventanaPrincipal.CambiarColorConsultorio(numeroConsultorio, activo);
+            }
 
             if (activo)
             {
