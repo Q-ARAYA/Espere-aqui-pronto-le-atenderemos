@@ -1,4 +1,4 @@
-using System.Windows;
+Ôªøusing System.Windows;
 using ProyectoAnalisis.Logica;
 using ProyectoAnalisis.LogicaVistas;
 using System.Linq;
@@ -17,44 +17,36 @@ namespace ProyectoAnalisis.Vistas
         private void CargarEspecialidades()
         {
             var lista = LogicaVistaMain.CargarEspecialidades();
-            cmbEspecialidad.ItemsSource = lista.Select(esp => $"{esp.Nombre} - {esp.Duracion} min").ToList();
+            lstEspecialidades.ItemsSource = lista;
+            lstEspecialidades.DisplayMemberPath = "Nombre";
         }
 
         private void BtnAgregar_Click(object sender, RoutedEventArgs e)
         {
             string nombre = txtNombre.Text.Trim();
-            string especialidadSeleccionada = cmbEspecialidad.SelectedItem as string;
+            var especialidadesSeleccionadas = lstEspecialidades.SelectedItems.Cast<Especialidades>().ToList();
 
             if (string.IsNullOrWhiteSpace(nombre))
             {
                 MessageBox.Show("Ingrese el nombre del paciente.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            if (string.IsNullOrWhiteSpace(especialidadSeleccionada))
+            if (especialidadesSeleccionadas == null || especialidadesSeleccionadas.Count == 0)
             {
                 MessageBox.Show("Seleccione una especialidad.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             
-            var todasEspecialidades = LogicaVistaMain.CargarEspecialidades();
-            var especialidad = todasEspecialidades
-                .FirstOrDefault(esp => $"{esp.Nombre} - {esp.Duracion} min" == especialidadSeleccionada);
-
-            if (especialidad == null)
-            {
-                MessageBox.Show("Especialidad no v·lida.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            }
 
             // Usa el controlador para crear el paciente
-            var ultimoPacienteID = LogicaVistaMain.ObtenerPacientes().Count; 
-            var resultado = LogicaVistaMain.CrearPaciente(ultimoPacienteID, nombre, especialidad);
-            System.Diagnostics.Debug.WriteLine($"David te odioooo");
-            System.Diagnostics.Debug.WriteLine($"Paciente creado: {nombre}, Especialidad: {especialidad.Nombre}, DuraciÛn: {especialidad.Duracion}");
+            var ultimoPacienteID = LogicaVistaMain.ObtenerPacientes().Count;
+            var resultado = LogicaVistaMain.CrearPaciente(ultimoPacienteID, nombre, especialidadesSeleccionadas);
+            System.Diagnostics.Debug.WriteLine($"Paciente creado: {nombre}, Especialidades: {string.Join(", ", especialidadesSeleccionadas.Select(x => x.Nombre))}");
 
 
             if (resultado == null)
             {
+                MessageBox.Show("Paciente creado exitosamente con: " + especialidadesSeleccionadas.Count() + " especialidades.", "EÃÅxito", MessageBoxButton.OK, MessageBoxImage.Information);
                 var paciente = LogicaVistaMain.ObtenerPacientes().LastOrDefault();
                 if (paciente != null && Owner is VentanaPrincipal ventanaPrincipal)
                 {

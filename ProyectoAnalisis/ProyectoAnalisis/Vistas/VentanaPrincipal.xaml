@@ -111,7 +111,7 @@
                     <TextBlock Text="&#xE823;" FontFamily="Segoe MDL2 Assets" FontSize="28" Margin="0,0,10,0"/>
                     <TextBlock Text="Lista de espera" FontSize="18" VerticalAlignment="Center" Margin="0,0,30,0"/>
                     <ListBox x:Name="lstEspera" Height="74" 
-                             Background="#B7B7B7" BorderThickness="0" SelectionChanged="lstEspera_SelectionChanged" Width="1916"
+                             Background="#B7B7B7" BorderThickness="0" SelectionChanged="lstEspera_SelectionChanged" Width="1618"
                              ScrollViewer.HorizontalScrollBarVisibility="Auto"
                              ScrollViewer.VerticalScrollBarVisibility="Disabled">
                         <ListBox.ItemsPanel>

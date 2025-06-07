@@ -126,24 +126,6 @@ namespace ProyectoAnalisis.LogicaVistas
             }
         }
 
-        public static void MostrarPacientes(List<Pacientes> pacientes, WrapPanel panel)
-        {
-            panel.Children.Clear();
-            foreach (var paciente in pacientes)
-            {
-                Ellipse circulo = new Ellipse
-                {
-                    Width = 40,
-                    Height = 40,
-                    Fill = Brushes.LightBlue,
-                    Stroke = Brushes.Black,
-                    StrokeThickness = 1,
-                    Margin = new System.Windows.Thickness(5),
-                    ToolTip = $"{paciente.Nombre} - Revisión de: {paciente.Especialidad.Nombre}"
-                };
-                panel.Children.Add(circulo);
-            }
-        }
 
         /// <summary>
         /// Crea y registra un paciente si el nombre no está vacío y la especialidad es válida.
@@ -152,14 +134,14 @@ namespace ProyectoAnalisis.LogicaVistas
         /// <param name="especialidad">Especialidad asignada.</param>
         /// <param name="prioridad">Prioridad del paciente.</param>
         /// <returns>Mensaje de error si falla, o null si tiene éxito.</returns>
-        public static string CrearPaciente(int id, string nombre, Especialidades especialidad)
+        public static string CrearPaciente(int id, string nombre, List<Especialidades> especialidades)
         {
             if (string.IsNullOrWhiteSpace(nombre))
                 return "El nombre del paciente no puede estar vacío.";
-            if (especialidad == null)
+            if (especialidades == null)
                 return "Debe seleccionar una especialidad.";
 
-            var paciente = new Pacientes(id, nombre, especialidad);
+            var paciente = new Pacientes(id, nombre, especialidades);
             listaDePacientes.Add(paciente);
             return null;
         }
