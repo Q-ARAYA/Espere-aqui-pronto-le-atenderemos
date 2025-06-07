@@ -12,6 +12,7 @@ namespace ProyectoAnalisis.LogicaVistas
     {
         private static List<Consultorios> listaDeConsultorios = new List<Consultorios>();
         private static List<Pacientes> listaDePacientes = new List<Pacientes>(); // NUEVO
+        private static List<PacientesEnEspera> listaDePacientesEnEspera = new List<PacientesEnEspera>();
 
         /// <summary>
         /// Valida los datos y crea una nueva especialidad en la capa de lógica.
@@ -151,14 +152,14 @@ namespace ProyectoAnalisis.LogicaVistas
         /// <param name="especialidad">Especialidad asignada.</param>
         /// <param name="prioridad">Prioridad del paciente.</param>
         /// <returns>Mensaje de error si falla, o null si tiene éxito.</returns>
-        public static string CrearPaciente(string nombre, Especialidades especialidad)
+        public static string CrearPaciente(int id, string nombre, Especialidades especialidad)
         {
             if (string.IsNullOrWhiteSpace(nombre))
                 return "El nombre del paciente no puede estar vacío.";
             if (especialidad == null)
                 return "Debe seleccionar una especialidad.";
 
-            var paciente = new Pacientes(nombre, especialidad);
+            var paciente = new Pacientes(id, nombre, especialidad);
             listaDePacientes.Add(paciente);
             return null;
         }
@@ -170,6 +171,20 @@ namespace ProyectoAnalisis.LogicaVistas
         public static List<Pacientes> ObtenerPacientes()
         {
             return new List<Pacientes>(listaDePacientes);
+        }
+
+        public static string CrearPacienteEnEspera(Pacientes paciente, string imagen)
+        {
+            if (paciente == null)
+                return "El paciente no puede ser nulo.";
+            var pacienteEnEspera = new PacientesEnEspera(paciente, imagen);
+            listaDePacientesEnEspera.Add(pacienteEnEspera);
+            return null; // Todo salió bien
+        }
+
+        public static List<PacientesEnEspera> ObtenerPacientesEnEspera()
+        {
+            return new List<PacientesEnEspera>(listaDePacientesEnEspera);
         }
     }
 }

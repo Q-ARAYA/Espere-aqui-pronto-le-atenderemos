@@ -106,10 +106,28 @@
 
         <!-- Border verde inferior (debe ir ANTES del panel blanco para quedar debajo) -->
         <Border Background="#6AA169" Height="220" VerticalAlignment="Bottom" Margin="0,0,0,0">
-            <Border Background="#B7B7B7" Height="70" VerticalAlignment="Center" Margin="0,0,0,0">
-                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="20,0">
+            <Border Background="#B7B7B7" Height="92" VerticalAlignment="Top" Margin="0,71,0,0">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10,0,0,0" Height="72">
                     <TextBlock Text="&#xE823;" FontFamily="Segoe MDL2 Assets" FontSize="28" Margin="0,0,10,0"/>
                     <TextBlock Text="Lista de espera" FontSize="18" VerticalAlignment="Center" Margin="0,0,30,0"/>
+                    <ListBox x:Name="lstEspera" Height="74" 
+                             Background="#B7B7B7" BorderThickness="0" SelectionChanged="lstEspera_SelectionChanged" Width="1916"
+                             ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                             ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Orientation="Horizontal"/>
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" Margin="5">
+                                    <Image Source="{Binding Imagen}" Width="48" Height="48" Margin="0,0,10,0"/>
+                                    <TextBlock Text="{Binding Paciente.Nombre}" FontSize="18" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
                 </StackPanel>
             </Border>
         </Border>
@@ -139,5 +157,7 @@
                 </UniformGrid>
             </ScrollViewer>
         </Border>
+
+        <!-- Lista de espera -->
     </Grid>
 </Window>

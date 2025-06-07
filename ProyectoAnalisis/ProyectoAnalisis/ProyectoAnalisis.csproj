@@ -66,6 +66,7 @@
     <Compile Include="Logica\Especialidades.cs" />
     <Compile Include="Logica\GestorDatos.cs" />
     <Compile Include="Logica\Pacientes.cs" />
+    <Compile Include="Logica\PacientesEnEspera.cs" />
     <Compile Include="Vistas\VentanaConsultorio.xaml.cs">
       <DependentUpon>VentanaConsultorio.xaml</DependentUpon>
     </Compile>
@@ -105,7 +106,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Imagenes\" />
+  </ItemGroup>
   <ItemGroup>
     <Page Include="Vistas\VentanaConsultorio.xaml">
       <Generator>MSBuild:Compile</Generator>

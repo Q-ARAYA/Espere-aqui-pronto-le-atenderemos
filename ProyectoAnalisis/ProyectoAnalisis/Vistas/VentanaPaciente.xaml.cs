@@ -2,6 +2,7 @@ using System.Windows;
 using ProyectoAnalisis.Logica;
 using ProyectoAnalisis.LogicaVistas;
 using System.Linq;
+using System.Collections.Specialized;
 
 namespace ProyectoAnalisis.Vistas
 {
@@ -34,7 +35,7 @@ namespace ProyectoAnalisis.Vistas
                 MessageBox.Show("Seleccione una especialidad.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-
+            
             var todasEspecialidades = LogicaVistaMain.CargarEspecialidades();
             var especialidad = todasEspecialidades
                 .FirstOrDefault(esp => $"{esp.Nombre} - {esp.Duracion} min" == especialidadSeleccionada);
@@ -46,16 +47,19 @@ namespace ProyectoAnalisis.Vistas
             }
 
             // Usa el controlador para crear el paciente
-            var resultado = LogicaVistaMain.CrearPaciente(nombre, especialidad);
-
+            var ultimoPacienteID = LogicaVistaMain.ObtenerPacientes().Count; 
+            var resultado = LogicaVistaMain.CrearPaciente(ultimoPacienteID, nombre, especialidad);
+            System.Diagnostics.Debug.WriteLine($"David te odioooo");
             System.Diagnostics.Debug.WriteLine($"Paciente creado: {nombre}, Especialidad: {especialidad.Nombre}, Duración: {especialidad.Duracion}");
 
 
             if (resultado == null)
             {
-                MessageBox.Show("Paciente agregado correctamente.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
-                txtNombre.Clear();
-                cmbEspecialidad.SelectedIndex = -1;
+                var paciente = LogicaVistaMain.ObtenerPacientes().LastOrDefault();
+                if (paciente != null && Owner is VentanaPrincipal ventanaPrincipal)
+                {
+                    ventanaPrincipal.AgregarPacienteEnEspera(paciente);
+                }
             }
             else
             {
