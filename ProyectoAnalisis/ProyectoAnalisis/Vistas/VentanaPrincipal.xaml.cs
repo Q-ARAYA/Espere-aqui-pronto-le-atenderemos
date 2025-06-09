@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows;
@@ -28,6 +29,7 @@ namespace ProyectoAnalisis.Vistas
         private DispatcherTimer timerAtencion;
         private List<Consultorios> consultoriosOptimizados;
         public bool optimizacionEnCurso = false;
+        private CancellationTokenSource optimizacionCts;
         public VentanaPrincipal()
         {
             InitializeComponent();
@@ -133,64 +135,75 @@ namespace ProyectoAnalisis.Vistas
         }
         public async Task ReoptimizarYAtender()
         {
-            // 1. Obtener pacientes en espera y consultorios activos
-            var pacientesEnEspera = LogicaVistaMain.ObtenerPacientesEnEspera();
-            var consultorios = LogicaVistaMain.ObtenerConsultorios();
+            // Cancelar optimización anterior si existe
+            optimizacionCts?.Cancel();
+            optimizacionCts = new CancellationTokenSource();
+            var token = optimizacionCts.Token;
 
-            // 2. Ejecutar el algoritmo genético para obtener la asignación óptima
-            var resultadoOptimizacion = AlgoritmoGenetico.Optimizar(pacientesEnEspera, consultorios);
-
-            // 3. Limpiar las colas actuales de los consultorios
-            foreach (var consultorio in consultorios)
-                consultorio.ColaPacientes.Clear();
-
-            // 4. Asignar los pacientes optimizados a las colas de los consultorios
-            foreach (var grupo in resultadoOptimizacion)
+            try
             {
-                if (grupo.Count == 0) continue;
-                var consultorio = consultorios.FirstOrDefault(c => c.NumeroConsultorio == grupo[0].Consultorio.NumeroConsultorio);
-                if (consultorio != null)
+                var pacientesEnEspera = LogicaVistaMain.ObtenerPacientesEnEspera();
+                var consultorios = LogicaVistaMain.ObtenerConsultorios();
+
+                var resultadoOptimizacion = AlgoritmoGenetico.Optimizar(pacientesEnEspera, consultorios);
+
+                foreach (var consultorio in consultorios)
+                    consultorio.ColaPacientes.Clear();
+
+                var pacientesAsignados = new HashSet<PacientesEnEspera>();
+
+                foreach (var grupo in resultadoOptimizacion)
                 {
-                    foreach (var asignacion in grupo)
-                        consultorio.ColaPacientes.Add(asignacion.Paciente);
+                    if (grupo.Count == 0) continue;
+                    var consultorio = consultorios.FirstOrDefault(c => c.NumeroConsultorio == grupo[0].Consultorio.NumeroConsultorio);
+                    if (consultorio != null)
+                    {
+                        foreach (var asignacion in grupo)
+                        {
+                            consultorio.ColaPacientes.Add(asignacion.Paciente);
+                            pacientesAsignados.Add(asignacion.Paciente);
+                        }
+                    }
                 }
+
+                foreach (var paciente in pacientesEnEspera.ToList())
+                {
+                    if (pacientesAsignados.Contains(paciente))
+                        LogicaVistaMain.EliminarPacienteEnEspera(paciente);
+                }
+
+                ActualizarListaEspera();
+                ActualizarColasConsultorios(consultorios);
+
+                await AtenderPacientesEnConsultorios(token);
             }
-
-            // 5. Limpiar la lista de espera
-            foreach (var paciente in pacientesEnEspera.ToList())
-                LogicaVistaMain.EliminarPacienteEnEspera(paciente);
-
-            // 6. Actualizar la UI
-            ActualizarListaEspera();
-            ActualizarColasConsultorios(consultorios);
-
-            // 7. Iniciar la atención en paralelo
-            await AtenderPacientesEnConsultorios();
+            catch (OperationCanceledException)
+            {
+                // La optimización fue cancelada, no hacer nada
+            }
         }
 
-        private async Task AtenderPacientesEnConsultorios()
+        private async Task AtenderPacientesEnConsultorios(CancellationToken token)
         {
             var consultorios = LogicaVistaMain.ObtenerConsultorios();
 
-            // Crear una tarea por consultorio activo
             var tareas = consultorios
                 .Where(c => c.Activo)
                 .Select(async consultorio =>
                 {
                     while (consultorio.ColaPacientes.Count > 0)
                     {
+                        token.ThrowIfCancellationRequested();
+
                         var paciente = consultorio.ColaPacientes[0];
-                        // Simular la atención (puedes ajustar el tiempo según la especialidad)
                         int duracion = paciente.Paciente.Especialidades.FirstOrDefault(e => consultorio.Especialidades.Any(ce => ce.Nombre == e.Nombre))?.Duracion ?? 1;
-                        await Task.Delay(duracion * 700); // 100 ms por minuto de especialidad (ajusta a tu gusto)
+                        await Task.Delay(duracion * 700, token);
                         consultorio.ColaPacientes.RemoveAt(0);
 
-                        // Actualizar la UI en el hilo principal
                         Dispatcher.Invoke(() => ActualizarColasConsultorios(consultorios));
                     }
                 }).ToList();
 
-            // Esperar a que todos los consultorios terminen
             await Task.WhenAll(tareas);
         }
 
