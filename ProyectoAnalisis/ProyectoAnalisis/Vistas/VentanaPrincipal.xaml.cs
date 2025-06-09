@@ -145,10 +145,22 @@ namespace ProyectoAnalisis.Vistas
                 var pacientesEnEspera = LogicaVistaMain.ObtenerPacientesEnEspera();
                 var consultorios = LogicaVistaMain.ObtenerConsultorios();
 
-                var resultadoOptimizacion = AlgoritmoGenetico.Optimizar(pacientesEnEspera, consultorios);
+                // Reunir todos los pacientes: en espera + en colas de consultorios
+                var pacientesEnColas = consultorios
+                    .SelectMany(c => c.ColaPacientes ?? new List<PacientesEnEspera>())
+                    .ToList();
 
+                var todosLosPacientes = pacientesEnEspera
+                    .Concat(pacientesEnColas)
+                    .Distinct() // Evita duplicados si algún paciente está en ambos lados
+                    .ToList();
+
+                // Limpiar todas las colas antes de optimizar
                 foreach (var consultorio in consultorios)
                     consultorio.ColaPacientes.Clear();
+
+                // Ejecutar el algoritmo genético con todos los pacientes
+                var resultadoOptimizacion = AlgoritmoGenetico.Optimizar(todosLosPacientes, consultorios);
 
                 var pacientesAsignados = new HashSet<PacientesEnEspera>();
 

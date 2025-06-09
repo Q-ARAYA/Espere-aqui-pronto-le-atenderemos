@@ -97,8 +97,6 @@ namespace ProyectoAnalisis.LogicaVistas
                     tiemposPorConsultorio[asignacion.Consultorio.NumeroConsultorio] = 0;
                 tiemposPorConsultorio[asignacion.Consultorio.NumeroConsultorio] += asignacion.Especialidad.Duracion;
             }
-            if (tiemposPorConsultorio.Count == 0)
-                return int.MaxValue; // Penaliza individuos sin asignaciones
             return tiemposPorConsultorio.Values.Max(); // El objetivo es minimizar el tiempo máximo de espera
         }
 
