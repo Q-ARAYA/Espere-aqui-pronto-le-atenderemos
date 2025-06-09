@@ -159,6 +159,16 @@ namespace ProyectoAnalisis.LogicaVistas
         {
             if (paciente == null)
                 return "El paciente no puede ser nulo.";
+
+            // Evitar duplicados: mismo paciente y mismas especialidades
+            if (listaDePacientesEnEspera.Any(p =>
+                p.Paciente.pacienteID == paciente.pacienteID &&
+                p.Paciente.Especialidades.Select(e => e.Nombre).OrderBy(x => x)
+                    .SequenceEqual(paciente.Especialidades.Select(e => e.Nombre).OrderBy(x => x))))
+            {
+                return null;
+            }
+
             var pacienteEnEspera = new PacientesEnEspera(paciente, imagen);
             listaDePacientesEnEspera.Add(pacienteEnEspera);
             return null; // Todo salió bien

@@ -18,12 +18,16 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace ProyectoAnalisis.Vistas
 {
     public partial class VentanaPrincipal : Window
     {
         private bool optimizacionActiva = false;
+        private DispatcherTimer timerAtencion;
+        private List<Consultorios> consultoriosOptimizados;
+        public bool optimizacionEnCurso = false;
         public VentanaPrincipal()
         {
             InitializeComponent();
@@ -55,7 +59,7 @@ namespace ProyectoAnalisis.Vistas
 
         public void CambiarColorConsultorio(int numeroConsultorio, bool activo)
         {
-            
+
             var uniformGrid = LogicalTreeHelper.FindLogicalNode(this, "CabeceraConsultorios") as UniformGrid;
             if (uniformGrid == null)
                 return;
@@ -70,7 +74,7 @@ namespace ProyectoAnalisis.Vistas
                 }
             }
         }
-        
+
 
         public void AgregarPacienteEnEspera(Pacientes paciente)
         {
@@ -93,8 +97,8 @@ namespace ProyectoAnalisis.Vistas
 
         private void ActualizarListaEspera()
         {
-            var pacientesEnEspera = LogicaVistaMain.ObtenerPacientesEnEspera();
             lstEspera.ItemsSource = null;
+            var pacientesEnEspera = LogicaVistaMain.ObtenerPacientesEnEspera();
             lstEspera.ItemsSource = pacientesEnEspera;
         }
 
@@ -118,6 +122,7 @@ namespace ProyectoAnalisis.Vistas
             {
                 if (i < consultorios.Count && consultorios[i].ColaPacientes != null)
                 {
+                    listBoxes[i].ItemsSource = null;
                     listBoxes[i].ItemsSource = consultorios[i].ColaPacientes;
                 }
                 else
@@ -128,117 +133,72 @@ namespace ProyectoAnalisis.Vistas
         }
         public async Task ReoptimizarYAtender()
         {
-            if (!optimizacionActiva)
-                return; // No hacer nada si la optimización no está activa
-
+            // 1. Obtener pacientes en espera y consultorios activos
+            var pacientesEnEspera = LogicaVistaMain.ObtenerPacientesEnEspera();
             var consultorios = LogicaVistaMain.ObtenerConsultorios();
-            await MoverPacientesGraficamente(consultorios);
-            await AtenderPacientesEnConsultorios(consultorios);
-        }
-        // Ejemplo: después de cerrar un consultorio
 
-        private async Task AtenderPacientesEnConsultorios(List<Consultorios> consultorios)
-        {
-            bool hayPacientes = true;
-            while (hayPacientes)
-            {
-                hayPacientes = false;
-                foreach (var consultorio in consultorios.Where(c => c.Activo))
-                {
-                    if (consultorio.ColaPacientes.Count > 0)
-                    {
-                        hayPacientes = true;
-                        var pacienteEnEspera = consultorio.ColaPacientes[0];
-                        consultorio.ColaPacientes.RemoveAt(0);
+            // 2. Ejecutar el algoritmo genético para obtener la asignación óptima
+            var resultadoOptimizacion = AlgoritmoGenetico.Optimizar(pacientesEnEspera, consultorios);
 
-                        // Busca la primera especialidad que el consultorio puede atender
-                        var especialidadAtendible = pacienteEnEspera.Paciente.Especialidades
-                            .FirstOrDefault(e => consultorio.Especialidades.Any(c => c.Nombre == e.Nombre));
-
-                        if (especialidadAtendible != null)
-                        {
-                            int duracion = especialidadAtendible.Duracion;
-                            await Task.Delay(duracion * 100);
-
-                            // Elimina la especialidad atendida
-                            pacienteEnEspera.Paciente.Especialidades.Remove(especialidadAtendible);
-
-                            // Si quedan especialidades, intenta asignar a otro consultorio disponible
-                            if (pacienteEnEspera.Paciente.Especialidades.Count > 0)
-                            {
-                                var siguienteEspecialidad = pacienteEnEspera.Paciente.Especialidades.FirstOrDefault();
-                                var consultorioDisponible = consultorios
-                                    .FirstOrDefault(c => c.Activo && c.Especialidades.Any(e => e.Nombre == siguienteEspecialidad.Nombre));
-                                if (consultorioDisponible != null)
-                                {
-                                    consultorioDisponible.ColaPacientes.Add(pacienteEnEspera);
-                                }
-                                else
-                                {
-                                    LogicaVistaMain.CrearPacienteEnEspera(pacienteEnEspera.Paciente, pacienteEnEspera.Imagen);
-                                }
-                            }
-                        }
-                        else
-                        {
-                            // No se puede atender ninguna especialidad, vuelve a lista de espera
-                            LogicaVistaMain.CrearPacienteEnEspera(pacienteEnEspera.Paciente, pacienteEnEspera.Imagen);
-                        }
-
-                        ActualizarColasConsultorios(consultorios);
-                        ActualizarListaEspera();
-                    }
-                }
-            }
-        }
-
-        private Task MoverPacientesGraficamente(List<Consultorios> consultorios)
-        {
-            // Limpiar colas
+            // 3. Limpiar las colas actuales de los consultorios
             foreach (var consultorio in consultorios)
                 consultorio.ColaPacientes.Clear();
 
-            // Obtener la mejor asignación del algoritmo genético
-            var pacientesEnEspera = LogicaVistaMain.ObtenerPacientesEnEspera().ToList();
-            var resultado = AlgoritmoGenetico.Optimizar(pacientesEnEspera, consultorios);
-
-            foreach (var grupo in resultado)
+            // 4. Asignar los pacientes optimizados a las colas de los consultorios
+            foreach (var grupo in resultadoOptimizacion)
             {
                 if (grupo.Count == 0) continue;
-                var consultorio = grupo[0].Consultorio;
-                foreach (var asignacion in grupo)
+                var consultorio = consultorios.FirstOrDefault(c => c.NumeroConsultorio == grupo[0].Consultorio.NumeroConsultorio);
+                if (consultorio != null)
                 {
-                    var pacienteEnEspera = pacientesEnEspera.FirstOrDefault(p => p.Paciente == asignacion.Paciente.Paciente);
-                    if (pacienteEnEspera != null)
-                    {
-                        LogicaVistaMain.EliminarPacienteEnEspera(pacienteEnEspera);
-                        consultorio.ColaPacientes.Add(pacienteEnEspera);
-                    }
+                    foreach (var asignacion in grupo)
+                        consultorio.ColaPacientes.Add(asignacion.Paciente);
                 }
             }
 
-            // Refresca la UI una sola vez al final
+            // 5. Limpiar la lista de espera
+            foreach (var paciente in pacientesEnEspera.ToList())
+                LogicaVistaMain.EliminarPacienteEnEspera(paciente);
+
+            // 6. Actualizar la UI
             ActualizarListaEspera();
             ActualizarColasConsultorios(consultorios);
 
-            return Task.CompletedTask;
+            // 7. Iniciar la atención en paralelo
+            await AtenderPacientesEnConsultorios();
         }
-        private async void btnIniciarOptimizacion_Click(object sender, RoutedEventArgs e)
+
+        private async Task AtenderPacientesEnConsultorios()
         {
-            optimizacionActiva = true;
             var consultorios = LogicaVistaMain.ObtenerConsultorios();
 
-            await MoverPacientesGraficamente(consultorios);
-            await AtenderPacientesEnConsultorios(consultorios);
+            // Crear una tarea por consultorio activo
+            var tareas = consultorios
+                .Where(c => c.Activo)
+                .Select(async consultorio =>
+                {
+                    while (consultorio.ColaPacientes.Count > 0)
+                    {
+                        var paciente = consultorio.ColaPacientes[0];
+                        // Simular la atención (puedes ajustar el tiempo según la especialidad)
+                        int duracion = paciente.Paciente.Especialidades.FirstOrDefault(e => consultorio.Especialidades.Any(ce => ce.Nombre == e.Nombre))?.Duracion ?? 1;
+                        await Task.Delay(duracion * 700); // 100 ms por minuto de especialidad (ajusta a tu gusto)
+                        consultorio.ColaPacientes.RemoveAt(0);
 
-            // Verifica si realmente no quedan pacientes en espera ni en colas
-            bool colasVacias = consultorios.All(c => c.ColaPacientes == null || c.ColaPacientes.Count == 0);
-            bool esperaVacia = LogicaVistaMain.ObtenerPacientesEnEspera().Count == 0;
+                        // Actualizar la UI en el hilo principal
+                        Dispatcher.Invoke(() => ActualizarColasConsultorios(consultorios));
+                    }
+                }).ToList();
 
-            if (colasVacias && esperaVacia)
-                MessageBox.Show("Todos los pacientes han sido atendidos.");
-            else
-                MessageBox.Show("Aún quedan pacientes por atender.");
+            // Esperar a que todos los consultorios terminen
+            await Task.WhenAll(tareas);
+        }
+
+        private async void btnIniciarOptimizacion_Click(object sender, RoutedEventArgs e)
+        {
+            optimizacionEnCurso = true;
+            await ReoptimizarYAtender();
+            optimizacionEnCurso = false;
         }
     }
 }
