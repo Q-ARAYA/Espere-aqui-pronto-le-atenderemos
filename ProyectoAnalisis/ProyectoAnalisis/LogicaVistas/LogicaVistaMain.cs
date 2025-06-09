@@ -168,5 +168,11 @@ namespace ProyectoAnalisis.LogicaVistas
         {
             return new List<PacientesEnEspera>(listaDePacientesEnEspera);
         }
+
+        public static void EliminarPacienteEnEspera(PacientesEnEspera paciente)
+        {
+            listaDePacientesEnEspera.Remove(paciente);
+        }
+
     }
 }

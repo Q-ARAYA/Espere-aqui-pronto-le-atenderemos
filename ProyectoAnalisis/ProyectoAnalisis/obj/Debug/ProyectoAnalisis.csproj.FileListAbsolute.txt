@@ -10,7 +10,6 @@ C:\Users\david\OneDrive\Escritorio\Espere-aqui-pronto-le-atenderemos#\ProyectoAn
 C:\Users\david\OneDrive\Escritorio\Espere-aqui-pronto-le-atenderemos#\ProyectoAnalisis\ProyectoAnalisis\obj\Debug\ProyectoAnalisis.csproj.CoreCompileInputs.cache
 C:\Users\david\OneDrive\Escritorio\Espere-aqui-pronto-le-atenderemos#\ProyectoAnalisis\ProyectoAnalisis\obj\Debug\ProyectoAnalisis.exe
 C:\Users\david\OneDrive\Escritorio\Espere-aqui-pronto-le-atenderemos#\ProyectoAnalisis\ProyectoAnalisis\obj\Debug\ProyectoAnalisis.pdb
-C:\Users\david\OneDrive\Escritorio\Espere-aqui-pronto-le-atenderemos#\ProyectoAnalisis\ProyectoAnalisis\obj\Debug\ProyectoAnalisis.exe.config
 D:\Archivos\Documentos\TEC\2025 Semestre I\Analisis\PY2 AG\Espere-aqui-pronto-le-atenderemos\ProyectoAnalisis\ProyectoAnalisis\bin\Debug\ProyectoAnalisis.exe.config
 D:\Archivos\Documentos\TEC\2025 Semestre I\Analisis\PY2 AG\Espere-aqui-pronto-le-atenderemos\ProyectoAnalisis\ProyectoAnalisis\bin\Debug\ProyectoAnalisis.exe
 D:\Archivos\Documentos\TEC\2025 Semestre I\Analisis\PY2 AG\Espere-aqui-pronto-le-atenderemos\ProyectoAnalisis\ProyectoAnalisis\bin\Debug\ProyectoAnalisis.pdb
@@ -40,3 +39,4 @@ C:\Users\david\OneDrive\Escritorio\Espere-aqui-pronto-le-atenderemos#\ProyectoAn
 C:\Users\david\OneDrive\Escritorio\Espere-aqui-pronto-le-atenderemos#\ProyectoAnalisis\ProyectoAnalisis\obj\Debug\Vistas\VentanaPaciente.g.cs
 C:\Users\david\OneDrive\Escritorio\Espere-aqui-pronto-le-atenderemos#\ProyectoAnalisis\ProyectoAnalisis\obj\Debug\Vistas\VentanaPrincipal.g.cs
 C:\Users\david\OneDrive\Escritorio\Espere-aqui-pronto-le-atenderemos#\ProyectoAnalisis\ProyectoAnalisis\obj\Debug\Vistas\VentanaEspecialidades.g.cs
+C:\Users\david\OneDrive\Escritorio\Espere-aqui-pronto-le-atenderemos#\ProyectoAnalisis\ProyectoAnalisis\obj\Debug\ProyectoAnalisis.exe.config

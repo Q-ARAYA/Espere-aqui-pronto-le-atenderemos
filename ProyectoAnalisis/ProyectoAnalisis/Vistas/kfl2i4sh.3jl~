@@ -1,0 +1,315 @@
+﻿using ProyectoAnalisis.Logica;
+using ProyectoAnalisis.LogicaVistas;
+using System;
+using System.Collections.Generic;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
+
+namespace ProyectoAnalisis.Vistas
+{
+    public partial class VentanaPrincipal : Window
+    {
+        public VentanaPrincipal()
+        {
+            InitializeComponent();
+        }
+
+        private void btnEspecialidades_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine($"David te odioooo");
+            var ventana = new VentanaEspecialidades();
+            ventana.ShowDialog();
+        }
+
+        private void Consultorio_Click(object sender, MouseButtonEventArgs e)
+        {
+            if (sender is Border border && border.Tag is string tag && int.TryParse(tag, out int numeroConsultorio))
+            {
+                var ventana = new VentanaConsultorio(numeroConsultorio);
+                ventana.Owner = this;
+                ventana.ShowDialog();
+            }
+        }
+
+        private void btnPacientes_Click(object sender, RoutedEventArgs e)
+        {
+            var ventana = new VentanaPaciente();
+            ventana.Owner = this;
+            ventana.ShowDialog();
+        }
+
+        public void CambiarColorConsultorio(int numeroConsultorio, bool activo)
+        {
+            
+            var uniformGrid = LogicalTreeHelper.FindLogicalNode(this, "CabeceraConsultorios") as UniformGrid;
+            if (uniformGrid == null)
+                return;
+
+            // Busca el Border correspondiente usando el Tag
+            foreach (var child in uniformGrid.Children)
+            {
+                if (child is Border border && border.Tag != null && border.Tag.ToString() == numeroConsultorio.ToString())
+                {
+                    border.Background = activo ? Brushes.LightGreen : Brushes.IndianRed;
+                    break;
+                }
+            }
+        }
+        
+
+        public void AgregarPacienteEnEspera(Pacientes paciente)
+        {
+            // Selecciona una imagen aleatoria
+
+            var imagenes = Directory.GetFiles("C:\\Users\\david\\OneDrive\\Escritorio\\Espere-aqui-pronto-le-atenderemos#\\ProyectoAnalisis\\ProyectoAnalisis\\Imagenes\\", "*.png").ToList();
+
+            string imagenSeleccionada = imagenes.Count > 0
+                ? imagenes[new System.Random().Next(imagenes.Count)]
+                : null;
+
+            var resultado = LogicaVistaMain.CrearPacienteEnEspera(paciente, imagenSeleccionada);
+            if (resultado != null)
+            {
+                MessageBox.Show(resultado, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            ActualizarListaEspera();
+        }
+
+        private void ActualizarListaEspera()
+        {
+            var pacientesEnEspera = LogicaVistaMain.ObtenerPacientesEnEspera();
+            lstEspera.ItemsSource = null;
+            lstEspera.ItemsSource = pacientesEnEspera;
+        }
+
+        private void lstEspera_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+
+        private void ActualizarColasConsultorios(List<Consultorios> consultorios)
+        {
+            if (consultorios[0].ColaPacientes != null) {
+                lstConsultorio1.ItemsSource = consultorios[0].ColaPacientes;
+            }
+            else {
+                lstConsultorio1.ItemsSource = null;
+            }
+
+            if (consultorios[1].ColaPacientes != null)
+            {
+                lstConsultorio2.ItemsSource = consultorios[1].ColaPacientes;
+            } 
+            else
+            {
+                lstConsultorio2.ItemsSource = null;
+            }
+            if (consultorios[2].ColaPacientes != null)
+            {
+                lstConsultorio3.ItemsSource = consultorios[2].ColaPacientes;
+            } 
+            else
+            {
+                lstConsultorio3.ItemsSource = null;
+            }
+
+            if (consultorios[3].ColaPacientes != null)
+            {
+                lstConsultorio4.ItemsSource = consultorios[3].ColaPacientes;
+            }
+            else
+            {
+                lstConsultorio4.ItemsSource = null;
+            }
+
+            if (consultorios[4].ColaPacientes != null)
+            {
+                lstConsultorio5.ItemsSource = consultorios[4].ColaPacientes;
+            }
+            else
+            {
+                lstConsultorio5.ItemsSource = null;
+            }
+            if (consultorios[5].ColaPacientes != null)
+            {
+                lstConsultorio6.ItemsSource = consultorios[5].ColaPacientes;
+            }
+            else
+            {
+                lstConsultorio6.ItemsSource = null;
+            }
+            if (consultorios[6].ColaPacientes != null)
+            {
+                lstConsultorio7.ItemsSource = consultorios[6].ColaPacientes;
+            }
+            else
+            {
+                lstConsultorio7.ItemsSource = null;
+            }
+
+            if (consultorios[7].ColaPacientes != null)
+            {
+                lstConsultorio8.ItemsSource = consultorios[7].ColaPacientes;
+            }
+            else
+            {
+                lstConsultorio8.ItemsSource = null;
+            }
+
+            if (consultorios[8].ColaPacientes != null)
+            {
+                lstConsultorio9.ItemsSource = consultorios[8].ColaPacientes;
+            }
+            else
+            {
+                lstConsultorio9.ItemsSource = null;
+            }
+
+            if (consultorios[9].ColaPacientes != null)
+            {
+                lstConsultorio10.ItemsSource = consultorios[9].ColaPacientes;
+            }
+            else
+            {
+                lstConsultorio10.ItemsSource = null;
+            }
+
+            if (consultorios[10].ColaPacientes != null)
+            {
+                lstConsultorio11.ItemsSource = consultorios[10].ColaPacientes;
+            }
+            else
+            {
+                lstConsultorio11.ItemsSource = null;
+            }
+
+            if (consultorios[11].ColaPacientes != null)
+            {
+                lstConsultorio12.ItemsSource = consultorios[11].ColaPacientes;
+            }
+            else
+            {
+                lstConsultorio12.ItemsSource = null;
+            }
+
+            if (consultorios[12].ColaPacientes != null)
+            {
+                lstConsultorio13.ItemsSource = consultorios[12].ColaPacientes;
+            }
+            else
+            {
+                lstConsultorio13.ItemsSource = null;
+            }
+
+            if (consultorios[13].ColaPacientes != null)
+            {
+                lstConsultorio14.ItemsSource = consultorios[13].ColaPacientes;
+            }
+            else
+            {
+                lstConsultorio14.ItemsSource = null;
+            }
+
+            if (consultorios[14].ColaPacientes != null)
+            {
+                lstConsultorio15.ItemsSource = consultorios[14].ColaPacientes;
+            }
+            else
+            {
+                lstConsultorio15.ItemsSource = null;
+            }
+        }
+
+        private async Task AtenderPacientesEnConsultorios(List<Consultorios> consultorios)
+        {
+            bool hayPacientes = true;
+            while (hayPacientes)
+            {
+                hayPacientes = false;
+                foreach (var consultorio in consultorios.Where(c => c.Activo))
+                {
+                    if (consultorio.ColaPacientes.Count > 0)
+                    {
+                        hayPacientes = true;
+                        // Simula la atención del primer paciente de la cola
+                        var pacienteAtendido = consultorio.ColaPacientes[0];
+                        consultorio.ColaPacientes.RemoveAt(0);
+                        ActualizarColasConsultorios(consultorios);
+
+                        // Simula el tiempo de atención según la especialidad (puedes ajustar la lógica)
+                        int duracion = pacienteAtendido.Paciente.Especialidades
+                            .Where(e => consultorio.Especialidades.Any(c => c.Nombre == e.Nombre))
+                            .Select(e => e.Duracion)
+                            .DefaultIfEmpty(1000)
+                            .First();
+
+                        await Task.Delay(duracion * 100); // 100 ms por minuto de especialidad (ajusta a tu gusto)
+                    }
+                }
+            }
+        }
+
+        private async Task MoverPacientesGraficamente(List<Consultorios> consultorios)
+        {
+            // Limpiar colas
+            foreach (var consultorio in consultorios)
+                consultorio.ColaPacientes.Clear();
+
+            // Obtener la mejor asignación del algoritmo genético
+            var pacientesEnEspera = LogicaVistaMain.ObtenerPacientesEnEspera();
+            var resultado = AlgoritmoGenetico.Optimizar(pacientesEnEspera, consultorios);
+
+            // resultado: List<List<AsignacionPaciente>> agrupado por consultorio
+            foreach (var grupo in resultado)
+            {
+                if (grupo.Count == 0) continue;
+                var consultorio = grupo[0].Consultorio;
+                foreach (var asignacion in grupo)
+                {
+                    // Quitar de la lista de espera
+                    var pacienteEnEspera = pacientesEnEspera.FirstOrDefault(p => p.Paciente == asignacion.Paciente.Paciente);
+                    if (pacienteEnEspera != null)
+                    {
+                        // Animación: quitar de espera, agregar a cola, refrescar UI
+                        lstEspera.ItemsSource = null;
+                        LogicaVistaMain.ObtenerPacientesEnEspera().Remove(pacienteEnEspera);
+                        lstEspera.ItemsSource = LogicaVistaMain.ObtenerPacientesEnEspera();
+
+                        consultorio.ColaPacientes.Add(pacienteEnEspera);
+                        ActualizarColasConsultorios(consultorios);
+
+                        await Task.Delay(500); // Espera para simular movimiento
+                    }
+                }
+            }
+        }
+        private async void btnIniciarOptimizacion_Click(object sender, RoutedEventArgs e)
+        {
+            var consultorios = LogicaVistaMain.ObtenerConsultorios();
+
+            await MoverPacientesGraficamente(consultorios);
+
+            // Inicia la atención automática de pacientes en cada consultorio
+            await AtenderPacientesEnConsultorios(consultorios);
+
+            MessageBox.Show("Todos los pacientes han sido atendidos.");
+        }
+
+    }
+}

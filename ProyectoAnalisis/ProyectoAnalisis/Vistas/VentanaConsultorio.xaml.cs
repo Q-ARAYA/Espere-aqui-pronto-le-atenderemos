@@ -10,11 +10,13 @@ namespace ProyectoAnalisis.Vistas
     {
         private bool activo = false;
         private int numeroConsultorio;
+        private VentanaPrincipal _ventanaPrincipal;
 
-        public VentanaConsultorio(int numeroConsultorio)
+        public VentanaConsultorio(int numeroConsultorio, VentanaPrincipal ventanaPrincipal)
         {
             InitializeComponent();
             this.numeroConsultorio = numeroConsultorio;
+            _ventanaPrincipal = ventanaPrincipal;
 
             // Buscar si ya existe el consultorio
             var consultorio = LogicaVistaMain.ObtenerConsultorios()
@@ -50,7 +52,7 @@ namespace ProyectoAnalisis.Vistas
             btnActivar.Background = activo ? System.Windows.Media.Brushes.IndianRed : System.Windows.Media.Brushes.ForestGreen;
         }
 
-        private void btnActivar_Click(object sender, RoutedEventArgs e)
+        private async void btnActivar_Click(object sender, RoutedEventArgs e)
         {
             if (!activo)
             {
@@ -91,6 +93,7 @@ namespace ProyectoAnalisis.Vistas
 
                 if (resultado == null)
                 {
+                    await _ventanaPrincipal.ReoptimizarYAtender();
                     MessageBox.Show($"Consultorio {numeroConsultorio} activado con {especialidadesAsignadas.Count} especialidad(es).");
                 }
                 else
@@ -102,6 +105,7 @@ namespace ProyectoAnalisis.Vistas
             {
                 // Desactivar consultorio
                 LogicaVistaMain.DesactivarConsultorio(numeroConsultorio);
+                await _ventanaPrincipal.ReoptimizarYAtender();
                 MessageBox.Show($"Consultorio {numeroConsultorio} desactivado correctamente.");
             }
         }

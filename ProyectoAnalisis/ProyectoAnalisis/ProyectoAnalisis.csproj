@@ -61,6 +61,7 @@
     </Compile>
     <Compile Include="LogicaSistema\SistemaConsultorios.cs" />
     <Compile Include="LogicaSistema\SistemaPacientes.cs" />
+    <Compile Include="LogicaVistas\AlgoritmoGenetico.cs" />
     <Compile Include="LogicaVistas\LogicaVistaMain.cs" />
     <Compile Include="Logica\Consultorios.cs" />
     <Compile Include="Logica\Especialidades.cs" />
