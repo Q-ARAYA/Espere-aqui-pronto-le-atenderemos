@@ -93,9 +93,9 @@ namespace ProyectoAnalisis.Vistas
 
                 if (resultado == null)
                 {
+                    MessageBox.Show($"Consultorio {numeroConsultorio} activado con {especialidadesAsignadas.Count} especialidad(es).");
                     if (_ventanaPrincipal.optimizacionEnCurso)
                         await _ventanaPrincipal.ReoptimizarYAtender();
-                    MessageBox.Show($"Consultorio {numeroConsultorio} activado con {especialidadesAsignadas.Count} especialidad(es).");
                 }
                 else
                 {
@@ -106,9 +106,9 @@ namespace ProyectoAnalisis.Vistas
             {
                 // Desactivar consultorio
                 LogicaVistaMain.DesactivarConsultorio(numeroConsultorio);
+                MessageBox.Show($"Consultorio {numeroConsultorio} desactivado correctamente.");
                 if (_ventanaPrincipal.optimizacionEnCurso)
                     await _ventanaPrincipal.ReoptimizarYAtender();
-                MessageBox.Show($"Consultorio {numeroConsultorio} desactivado correctamente.");
             }
         }
 

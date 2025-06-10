@@ -26,14 +26,13 @@ namespace ProyectoAnalisis.LogicaVistas
             int generaciones = 100,
             int tamPoblacion = 30)
         {
-            // Inicialización de la población
+
             var poblacion = new List<Individuo>();
             var rnd = new Random();
 
             for (int i = 0; i < tamPoblacion; i++)
             {
                 var individuo = new Individuo();
-                // En AlgoritmoGenetico.Optimizar, cambia el foreach de especialidades:
                 foreach (var paciente in pacientes)
                 {
                     var especialidadPendiente = paciente.EspecialidadPendiente;

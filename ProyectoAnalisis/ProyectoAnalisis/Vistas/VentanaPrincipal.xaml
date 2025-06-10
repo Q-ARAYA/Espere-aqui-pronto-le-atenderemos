@@ -158,21 +158,21 @@
         <Border Margin="21,150,20,220" Background="White" CornerRadius="20" BorderBrush="#B7B7B7" BorderThickness="6">
             <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
                 <UniformGrid x:Name="GridConsultorios" Rows="1" Columns="15">
-                    <ListBox x:Name="lstConsultorio1" Width="72" Height="500" ItemTemplate="{StaticResource PacienteTemplate}"/>
-                    <ListBox x:Name="lstConsultorio2" Width="72" Height="500" ItemTemplate="{StaticResource PacienteTemplate}"/>
-                    <ListBox x:Name="lstConsultorio3" Width="72" Height="500" ItemTemplate="{StaticResource PacienteTemplate}"/>
-                    <ListBox x:Name="lstConsultorio4" Width="72" Height="500" ItemTemplate="{StaticResource PacienteTemplate}"/>
-                    <ListBox x:Name="lstConsultorio5" Width="72" Height="500" ItemTemplate="{StaticResource PacienteTemplate}"/>
-                    <ListBox x:Name="lstConsultorio6" Width="72" Height="500" ItemTemplate="{StaticResource PacienteTemplate}"/>
-                    <ListBox x:Name="lstConsultorio7" Width="72" Height="500" ItemTemplate="{StaticResource PacienteTemplate}"/>
-                    <ListBox x:Name="lstConsultorio8" Width="72" Height="500" ItemTemplate="{StaticResource PacienteTemplate}"/>
-                    <ListBox x:Name="lstConsultorio9" Width="72" Height="500" ItemTemplate="{StaticResource PacienteTemplate}"/>
-                    <ListBox x:Name="lstConsultorio10" Width="72" Height="500" ItemTemplate="{StaticResource PacienteTemplate}"/>
-                    <ListBox x:Name="lstConsultorio11" Width="72" Height="500" ItemTemplate="{StaticResource PacienteTemplate}"/>
-                    <ListBox x:Name="lstConsultorio12" Width="72" Height="500" ItemTemplate="{StaticResource PacienteTemplate}"/>
-                    <ListBox x:Name="lstConsultorio13" Width="72" Height="500" ItemTemplate="{StaticResource PacienteTemplate}"/>
-                    <ListBox x:Name="lstConsultorio14" Width="72" Height="500" ItemTemplate="{StaticResource PacienteTemplate}"/>
-                    <ListBox x:Name="lstConsultorio15" Width="72" Height="500" ItemTemplate="{StaticResource PacienteTemplate}"/>
+                    <ListBox x:Name="lstConsultorio1" Width="72" Height="540" ItemTemplate="{StaticResource PacienteTemplate}"/>
+                    <ListBox x:Name="lstConsultorio2" Width="72" Height="540" ItemTemplate="{StaticResource PacienteTemplate}"/>
+                    <ListBox x:Name="lstConsultorio3" Width="72" Height="540" ItemTemplate="{StaticResource PacienteTemplate}"/>
+                    <ListBox x:Name="lstConsultorio4" Width="72" Height="540" ItemTemplate="{StaticResource PacienteTemplate}"/>
+                    <ListBox x:Name="lstConsultorio5" Width="72" Height="540" ItemTemplate="{StaticResource PacienteTemplate}"/>
+                    <ListBox x:Name="lstConsultorio6" Width="72" Height="540" ItemTemplate="{StaticResource PacienteTemplate}"/>
+                    <ListBox x:Name="lstConsultorio7" Width="72" Height="540" ItemTemplate="{StaticResource PacienteTemplate}"/>
+                    <ListBox x:Name="lstConsultorio8" Width="72" Height="540" ItemTemplate="{StaticResource PacienteTemplate}"/>
+                    <ListBox x:Name="lstConsultorio9" Width="72" Height="540" ItemTemplate="{StaticResource PacienteTemplate}"/>
+                    <ListBox x:Name="lstConsultorio10" Width="72" Height="540" ItemTemplate="{StaticResource PacienteTemplate}"/>
+                    <ListBox x:Name="lstConsultorio11" Width="72" Height="540" ItemTemplate="{StaticResource PacienteTemplate}"/>
+                    <ListBox x:Name="lstConsultorio12" Width="72" Height="540" ItemTemplate="{StaticResource PacienteTemplate}"/>
+                    <ListBox x:Name="lstConsultorio13" Width="72" Height="540" ItemTemplate="{StaticResource PacienteTemplate}"/>
+                    <ListBox x:Name="lstConsultorio14" Width="72" Height="540" ItemTemplate="{StaticResource PacienteTemplate}"/>
+                    <ListBox x:Name="lstConsultorio15" Width="72" Height="540" ItemTemplate="{StaticResource PacienteTemplate}"/>
                 </UniformGrid>
             </ScrollViewer>
         </Border>

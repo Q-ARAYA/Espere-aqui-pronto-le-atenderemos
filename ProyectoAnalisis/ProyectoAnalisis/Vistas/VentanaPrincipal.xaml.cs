@@ -112,24 +112,26 @@ namespace ProyectoAnalisis.Vistas
 
         private void ActualizarColasConsultorios(List<Consultorios> consultorios)
         {
-            // Asume que tienes 15 ListBox: lstConsultorio1 ... lstConsultorio15
+            
             List<ListBox> listBoxes = new List<ListBox>
-    {
-            lstConsultorio1, lstConsultorio2, lstConsultorio3, lstConsultorio4, lstConsultorio5,
-            lstConsultorio6, lstConsultorio7, lstConsultorio8, lstConsultorio9, lstConsultorio10,
-            lstConsultorio11, lstConsultorio12, lstConsultorio13, lstConsultorio14, lstConsultorio15
-    };
-
-            for (int i = 0; i < listBoxes.Count; i++)
             {
-                if (i < consultorios.Count && consultorios[i].ColaPacientes != null)
+                lstConsultorio1, lstConsultorio2, lstConsultorio3, lstConsultorio4, lstConsultorio5,
+                lstConsultorio6, lstConsultorio7, lstConsultorio8, lstConsultorio9, lstConsultorio10,
+                lstConsultorio11, lstConsultorio12, lstConsultorio13, lstConsultorio14, lstConsultorio15
+            };
+
+            // Limpia todos los listbox primero
+            foreach (var lb in listBoxes)
+                lb.ItemsSource = null;
+
+            // Asigna cada consultorio a su listbox según el identificador
+            foreach (var consultorio in consultorios)
+            {
+                int idx = consultorio.NumeroConsultorio - 1; 
+                if (idx >= 0 && idx < listBoxes.Count)
                 {
-                    listBoxes[i].ItemsSource = null;
-                    listBoxes[i].ItemsSource = consultorios[i].ColaPacientes;
-                }
-                else
-                {
-                    listBoxes[i].ItemsSource = null;
+                    listBoxes[idx].ItemsSource = null;
+                    listBoxes[idx].ItemsSource = consultorio.ColaPacientes;
                 }
             }
         }
@@ -177,7 +179,7 @@ namespace ProyectoAnalisis.Vistas
                     }
                 }
 
-                // Aquí está el cambio importante:
+                
                 // Solo elimina de la lista de espera a los pacientes que realmente fueron asignados
                 foreach (var paciente in pacientesEnEspera.ToList())
                 {
@@ -229,6 +231,7 @@ namespace ProyectoAnalisis.Vistas
                                 consultorio.ColaPacientes.RemoveAt(0);
                             }
                             Dispatcher.Invoke(() => ActualizarColasConsultorios(consultorios));
+                            Dispatcher.Invoke(() => ActualizarListaEspera());
                             return;
                         }
 
@@ -254,7 +257,7 @@ namespace ProyectoAnalisis.Vistas
                                 .ToList();
 
                             LogicaVistaMain.CrearPacienteEnEspera(pacienteEnEspera.Paciente, pacienteEnEspera.Imagen);
-                            ActualizarListaEspera();
+                            Dispatcher.Invoke(() => ActualizarListaEspera());
 
                             if (consultoriosDisponibles.Count > 0)
                             {
@@ -276,8 +279,14 @@ namespace ProyectoAnalisis.Vistas
         private async void btnIniciarOptimizacion_Click(object sender, RoutedEventArgs e)
         {
             optimizacionEnCurso = true;
+            btnOptimizar.IsEnabled = false;
+            btnOptimizar.Content = "Optimizando...";
+            btnOptimizar.Background = Brushes.LightGray;
             await ReoptimizarYAtender();
             optimizacionEnCurso = false;
+            btnOptimizar.IsEnabled = true;
+            btnOptimizar.Content = "Optimizar";
+            btnOptimizar.Background = Brushes.Green;
 
         }
     }
