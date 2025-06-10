@@ -20,12 +20,22 @@
                    Margin="30,20,0,0"
                    HorizontalAlignment="Left"
                    VerticalAlignment="Top"/>
-
         <!-- Botones superiores alineados a la derecha -->
         <StackPanel Orientation="Horizontal"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Top"
                     Margin="0,20,30,0">
+            <Button Content="Cargar Datos"
+                    Width="150"
+                    Height="40"
+                    FontSize="16"
+                    Margin="0,0,10,0"
+                    Background="#6AA169"
+                    Foreground="White"
+                    FontWeight="Bold"
+                    BorderThickness="0"
+                    Cursor="Hand"
+                    Click="btnCargarDatos_Click"/>
             <Button Content="Pacientes"
                     Width="150"
                     Height="40"

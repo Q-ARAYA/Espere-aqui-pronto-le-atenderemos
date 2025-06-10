@@ -1,0 +1,16 @@
+<Datos>
+  <Especialidades>
+    <Especialidad nombre="Cardiologia" duracion="30" />
+    <Especialidad nombre="Pediatria" duracion="20" />
+    <Especialidad nombre="Dermatologia" duracion="25" />
+  </Especialidades>
+  <Pacientes>
+    <Paciente id="1" nombre="Alfonso Juarez">
+      <Especialidad nombre="Cardiologia" />
+    </Paciente>
+    <Paciente id="2" nombre="Carmen Lira">
+      <Especialidad nombre="Pediatria" />
+      <Especialidad nombre="Dermatologia" />
+    </Paciente>
+  </Pacientes>
+</Datos>

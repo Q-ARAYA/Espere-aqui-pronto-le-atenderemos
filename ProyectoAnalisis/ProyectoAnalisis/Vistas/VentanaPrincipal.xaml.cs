@@ -35,6 +35,38 @@ namespace ProyectoAnalisis.Vistas
             InitializeComponent();
         }
 
+        private void btnCargarDatos_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                // Ruta completa al archivo datos.xml ubicado en la raiz del proyecto
+                string rutaArchivo = System.IO.Path.GetFullPath(
+                    System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "datos.xml")
+                );
+
+
+                // Cargar especialidades
+                List<Especialidades> especialidades = CargaDatos.CargarEspecialidadesDesdeXML(rutaArchivo);
+
+                // Cargar pacientes usando las especialidades cargadas
+                List<Pacientes> pacientes = CargaDatos.CargarPacientesDesdeXML(rutaArchivo, especialidades);
+
+                // Mostrar resumen en MessageBox
+                string mensaje = $"Especialidades cargadas: {especialidades.Count}\n" +
+                                 $"Pacientes cargados: {pacientes.Count}";
+
+                MessageBox.Show(mensaje, "Resultado de carga", MessageBoxButton.OK, MessageBoxImage.Information);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar el archivo:\n" + ex.Message,
+                                "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+
+
         private void btnEspecialidades_Click(object sender, RoutedEventArgs e)
         {
             System.Diagnostics.Debug.WriteLine($"David te odioooo");
