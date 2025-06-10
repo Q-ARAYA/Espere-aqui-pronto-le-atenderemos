@@ -152,7 +152,7 @@ namespace ProyectoAnalisis.Vistas
 
                 var todosLosPacientes = pacientesEnEspera
                     .Concat(pacientesEnColas)
-                    .Distinct()
+                    .Distinct() // Evita duplicados si algún paciente está en ambos lados
                     .ToList();
 
                 // Limpiar todas las colas antes de optimizar
@@ -163,6 +163,7 @@ namespace ProyectoAnalisis.Vistas
                 var resultadoOptimizacion = AlgoritmoGenetico.Optimizar(todosLosPacientes, consultorios);
 
                 var pacientesAsignados = new HashSet<PacientesEnEspera>();
+
                 foreach (var grupo in resultadoOptimizacion)
                 {
                     if (grupo.Count == 0) continue;
@@ -177,24 +178,10 @@ namespace ProyectoAnalisis.Vistas
                     }
                 }
 
-                // Aquí está el cambio importante:
-                // Solo elimina de la lista de espera a los pacientes que realmente fueron asignados
                 foreach (var paciente in pacientesEnEspera.ToList())
                 {
                     if (pacientesAsignados.Contains(paciente))
                         LogicaVistaMain.EliminarPacienteEnEspera(paciente);
-                    // Si no fue asignado, permanece en espera
-                }
-
-                // Además, los pacientes que estaban en colas y no fueron reasignados deben volver a espera
-                foreach (var paciente in pacientesEnColas)
-                {
-                    if (!pacientesAsignados.Contains(paciente))
-                    {
-                        // Evita duplicados en espera
-                        LogicaVistaMain.CrearPacienteEnEspera(paciente.Paciente, paciente.Imagen);
-
-                    }
                 }
 
                 ActualizarListaEspera();
@@ -213,30 +200,18 @@ namespace ProyectoAnalisis.Vistas
             var consultorios = LogicaVistaMain.ObtenerConsultorios();
 
             var tareas = consultorios
+                .Where(c => c.Activo)
                 .Select(async consultorio =>
                 {
                     while (consultorio.ColaPacientes.Count > 0)
                     {
                         token.ThrowIfCancellationRequested();
 
-                        // Si el consultorio ya no está activo, mueve los pacientes restantes a espera y termina
-                        if (!consultorio.Activo)
-                        {
-                            while (consultorio.ColaPacientes.Count > 0)
-                            {
-                                var pacienteRestante = consultorio.ColaPacientes[0];
-                                LogicaVistaMain.CrearPacienteEnEspera(pacienteRestante.Paciente, pacienteRestante.Imagen);
-                                consultorio.ColaPacientes.RemoveAt(0);
-                            }
-                            Dispatcher.Invoke(() => ActualizarColasConsultorios(consultorios));
-                            return;
-                        }
-
                         var pacienteEnEspera = consultorio.ColaPacientes[0];
                         var especialidadAtendida = pacienteEnEspera.EspecialidadPendiente;
                         int duracion = especialidadAtendida?.Duracion ?? 1;
 
-                        await Task.Delay(duracion * 1200, token);
+                        await Task.Delay(duracion * 1000, token);
 
                         consultorio.ColaPacientes.RemoveAt(0);
 
@@ -246,23 +221,29 @@ namespace ProyectoAnalisis.Vistas
                         // Si quedan más especialidades...
                         if (pacienteEnEspera.Paciente.Especialidades.Count > 0)
                         {
+                            // Siguiente especialidad pendiente
                             var siguiente = pacienteEnEspera.Paciente.Especialidades.First();
                             pacienteEnEspera.EspecialidadPendiente = siguiente;
-                            Dispatcher.Invoke(() => ActualizarColasConsultorios(consultorios));
+
+                            // ¿Hay consultorio activo para la siguiente especialidad?
                             var consultoriosDisponibles = consultorios
                                 .Where(c => c.Activo && c.Especialidades.Any(e => e.Nombre == siguiente.Nombre))
                                 .ToList();
 
-                            LogicaVistaMain.CrearPacienteEnEspera(pacienteEnEspera.Paciente, pacienteEnEspera.Imagen);
-                            ActualizarListaEspera();
-
                             if (consultoriosDisponibles.Count > 0)
                             {
+                                // Reoptimiza para que el paciente sea reasignado inmediatamente
+                                LogicaVistaMain.CrearPacienteEnEspera(pacienteEnEspera.Paciente, pacienteEnEspera.Imagen);
+                                ActualizarListaEspera();
                                 await ReoptimizarYAtender();
-                                return;
+                                return; // Salir del ciclo para evitar conflictos
                             }
                             else
                             {
+                                // No hay consultorio disponible, solo vuelve a ponerlo en espera
+                                LogicaVistaMain.CrearPacienteEnEspera(pacienteEnEspera.Paciente, pacienteEnEspera.Imagen);
+                                ActualizarListaEspera();
+                                // No reoptimices, porque no hay consultorio para esa especialidad
                                 return;
                             }
                         }
@@ -278,7 +259,6 @@ namespace ProyectoAnalisis.Vistas
             optimizacionEnCurso = true;
             await ReoptimizarYAtender();
             optimizacionEnCurso = false;
-
         }
     }
 }
