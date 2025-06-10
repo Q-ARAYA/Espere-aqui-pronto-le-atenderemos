@@ -207,10 +207,27 @@ namespace ProyectoAnalisis.Vistas
                     {
                         token.ThrowIfCancellationRequested();
 
-                        var paciente = consultorio.ColaPacientes[0];
-                        int duracion = paciente.Paciente.Especialidades.FirstOrDefault(e => consultorio.Especialidades.Any(ce => ce.Nombre == e.Nombre))?.Duracion ?? 1;
-                        await Task.Delay(duracion * 700, token);
+                        var pacienteEnEspera = consultorio.ColaPacientes[0];
+                        var especialidadAtendida = pacienteEnEspera.EspecialidadPendiente;
+                        int duracion = especialidadAtendida?.Duracion ?? 1;
+
+                        await Task.Delay(duracion * 1000, token);
+
                         consultorio.ColaPacientes.RemoveAt(0);
+
+                        // Elimina la especialidad atendida de la lista del paciente
+                        pacienteEnEspera.Paciente.Especialidades.Remove(especialidadAtendida);
+
+                        // Si quedan más especialidades, vuelve a ponerlo en espera con la siguiente
+                        if (pacienteEnEspera.Paciente.Especialidades.Count > 0)
+                        {
+                            pacienteEnEspera.EspecialidadPendiente = pacienteEnEspera.Paciente.Especialidades.First();
+                            LogicaVistaMain.CrearPacienteEnEspera(pacienteEnEspera.Paciente, pacienteEnEspera.Imagen);
+                            ActualizarListaEspera();
+                            await ReoptimizarYAtender();
+                            return; // Importante: salir del ciclo para evitar conflictos de 
+
+                        }
 
                         Dispatcher.Invoke(() => ActualizarColasConsultorios(consultorios));
                     }

@@ -12,10 +12,12 @@ namespace ProyectoAnalisis.Logica
         {
             Paciente = paciente;
             Imagen = imagen;
+            EspecialidadPendiente = paciente.Especialidades.FirstOrDefault();
         }
 
         public Pacientes Paciente { get; set; }
         public string Imagen { get; set; }
+        public Especialidades EspecialidadPendiente { get; set; }
     }
 }
 

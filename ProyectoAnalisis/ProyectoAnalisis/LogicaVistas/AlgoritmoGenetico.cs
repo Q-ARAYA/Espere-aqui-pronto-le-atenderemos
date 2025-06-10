@@ -33,25 +33,26 @@ namespace ProyectoAnalisis.LogicaVistas
             for (int i = 0; i < tamPoblacion; i++)
             {
                 var individuo = new Individuo();
+                // En AlgoritmoGenetico.Optimizar, cambia el foreach de especialidades:
                 foreach (var paciente in pacientes)
                 {
-                    // Para cada especialidad del paciente, asignar a un consultorio compatible aleatorio
-                    foreach (var especialidad in paciente.Paciente.Especialidades)
-                    {
-                        var consultoriosCompatibles = consultorios
-                            .Where(c => c.Activo && c.Especialidades.Any(e => e.Nombre == especialidad.Nombre))
-                            .ToList();
+                    var especialidadPendiente = paciente.EspecialidadPendiente;
+                    if (especialidadPendiente == null)
+                        continue;
 
-                        if (consultoriosCompatibles.Count > 0)
+                    var consultoriosCompatibles = consultorios
+                        .Where(c => c.Activo && c.Especialidades.Any(e => e.Nombre == especialidadPendiente.Nombre))
+                        .ToList();
+
+                    if (consultoriosCompatibles.Count > 0)
+                    {
+                        var consultorio = consultoriosCompatibles[rnd.Next(consultoriosCompatibles.Count)];
+                        individuo.Asignaciones.Add(new AsignacionPaciente
                         {
-                            var consultorio = consultoriosCompatibles[rnd.Next(consultoriosCompatibles.Count)];
-                            individuo.Asignaciones.Add(new AsignacionPaciente
-                            {
-                                Paciente = paciente,
-                                Consultorio = consultorio,
-                                Especialidad = especialidad
-                            });
-                        }
+                            Paciente = paciente,
+                            Consultorio = consultorio,
+                            Especialidad = especialidadPendiente
+                        });
                     }
                 }
                 individuo.Fitness = CalcularFitness(individuo);
