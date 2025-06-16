@@ -69,7 +69,6 @@ namespace ProyectoAnalisis.Vistas
 
         private void btnEspecialidades_Click(object sender, RoutedEventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine($"David te odioooo");
             var ventana = new VentanaEspecialidades();
             ventana.ShowDialog();
         }
@@ -114,7 +113,10 @@ namespace ProyectoAnalisis.Vistas
         {
             // Selecciona una imagen aleatoria
 
-            var imagenes = Directory.GetFiles("C:\\Users\\david\\OneDrive\\Escritorio\\Espere-aqui-pronto-le-atenderemos#\\ProyectoAnalisis\\ProyectoAnalisis\\Imagenes\\", "*.png").ToList();
+            string rutaBase = AppDomain.CurrentDomain.BaseDirectory;
+            string rutaImagenes = System.IO.Path.GetFullPath(System.IO.Path.Combine(rutaBase, @"..\..\Imagenes"));
+            var imagenes = Directory.GetFiles(rutaImagenes, "*.png").ToList();
+
 
             string imagenSeleccionada = imagenes.Count > 0
                 ? imagenes[new System.Random().Next(imagenes.Count)]
@@ -256,6 +258,7 @@ namespace ProyectoAnalisis.Vistas
                         // Si el consultorio ya no está activo, mueve los pacientes restantes a espera y termina
                         if (!consultorio.Activo)
                         {
+                            
                             while (consultorio.ColaPacientes.Count > 0)
                             {
                                 var pacienteRestante = consultorio.ColaPacientes[0];
@@ -271,14 +274,16 @@ namespace ProyectoAnalisis.Vistas
                         var especialidadAtendida = pacienteEnEspera.EspecialidadPendiente;
                         int duracion = especialidadAtendida?.Duracion ?? 1;
 
-                        await Task.Delay(duracion * 1200, token);
+                        await Task.Delay(duracion * 500, token);
 
                         consultorio.ColaPacientes.RemoveAt(0);
 
                         // Elimina la especialidad atendida de la lista del paciente
                         pacienteEnEspera.Paciente.Especialidades.Remove(especialidadAtendida);
 
-                        // Si quedan más especialidades...
+                        // Si quedan más especialidades
+
+                        /*
                         if (pacienteEnEspera.Paciente.Especialidades.Count > 0)
                         {
                             var siguiente = pacienteEnEspera.Paciente.Especialidades.First();
@@ -301,6 +306,7 @@ namespace ProyectoAnalisis.Vistas
                                 return;
                             }
                         }
+                        */
 
                         Dispatcher.Invoke(() => ActualizarColasConsultorios(consultorios));
                     }

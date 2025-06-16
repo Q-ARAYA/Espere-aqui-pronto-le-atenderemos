@@ -5,9 +5,19 @@
 
     <Window.Resources>
         <DataTemplate x:Key="PacienteTemplate">
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center"
+                        ToolTipService.ShowDuration="10000">
                 <Image Source="{Binding Imagen}" Width="60" Height="60" Margin="2"/>
                 <TextBlock Text="{Binding Paciente.Nombre}" HorizontalAlignment="Center"/>
+                <StackPanel.ToolTip>
+                    <ItemsControl ItemsSource="{Binding Paciente.Especialidades}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Nombre}" />
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </StackPanel.ToolTip>
             </StackPanel>
         </DataTemplate>
     </Window.Resources>
@@ -153,9 +163,19 @@
                         </ListBox.ItemsPanel>
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <StackPanel Orientation="Horizontal" Margin="5">
+                                <StackPanel Orientation="Horizontal" Margin="5"
+                                            ToolTipService.ShowDuration="10000">
                                     <Image Source="{Binding Imagen}" Width="48" Height="48" Margin="0,0,10,0"/>
                                     <TextBlock Text="{Binding Paciente.Nombre}" FontSize="18" VerticalAlignment="Center"/>
+                                    <StackPanel.ToolTip>
+                                        <ItemsControl ItemsSource="{Binding Paciente.Especialidades}">
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding Nombre}" />
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+                                    </StackPanel.ToolTip>
                                 </StackPanel>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
