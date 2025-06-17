@@ -168,6 +168,21 @@ namespace ProyectoAnalisis.LogicaVistas
                 var cola = kvp.Value;
                 int tiempoActual = 0;
 
+                // Penalizar órdenes incorrectos según prioridad
+                for (int i = 0; i < cola.Count; i++)
+                {
+                    for (int j = i + 1; j < cola.Count; j++)
+                    {
+                        // Si un paciente con alta prioridad está después de uno con baja prioridad
+                        if (cola[j].Paciente.Prioridad > cola[i].Paciente.Prioridad)
+                        {
+                            // Penalizar proporcionalmente a la diferencia de prioridad
+                            penalizacion += (cola[j].Paciente.Prioridad - cola[i].Paciente.Prioridad) * 100;
+                        }
+                    }
+                }
+
+                // Código original para tiempos
                 foreach (var asignacion in cola)
                 {
                     int tiempoInicio = tiempoActual;

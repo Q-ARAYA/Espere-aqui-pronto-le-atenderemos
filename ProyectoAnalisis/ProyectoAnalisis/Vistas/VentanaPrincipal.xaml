@@ -86,65 +86,67 @@
         <UniformGrid x:Name ="CabeceraConsultorios" Rows="1" Columns="15" Margin="30,80,30,0" Height="60" VerticalAlignment="Top">
             <Border Background="White" CornerRadius="10" Margin="5" Padding="10"
                     MouseLeftButtonUp="Consultorio_Click" Tag="1">
-                <TextBlock Text="Consultorio" FontWeight="Bold" HorizontalAlignment="Center"/>
+                <TextBlock FontWeight="Bold" HorizontalAlignment="Center" Margin="0,-6,0,-10"><Run Text="Consultorio"/><LineBreak/><Run Language="es-cr" Text="         1"/></TextBlock>
             </Border>
             <Border Background="White" CornerRadius="10" Margin="5" Padding="10"
                     MouseLeftButtonUp="Consultorio_Click" Tag="2">
-                <TextBlock Text="Consultorio" FontWeight="Bold" HorizontalAlignment="Center"/>
+                <TextBlock FontWeight="Bold" HorizontalAlignment="Center" Margin="0,-6,0,-10"><Run Text="Consultorio"/><LineBreak/><Run Text="         "/><Run Language="es-cr" Text="2"/></TextBlock>
             </Border>
             <Border Background="White" CornerRadius="10" Margin="5" Padding="10"
                     MouseLeftButtonUp="Consultorio_Click" Tag="3">
-                <TextBlock Text="Consultorio" FontWeight="Bold" HorizontalAlignment="Center"/>
+                <TextBlock FontWeight="Bold" HorizontalAlignment="Center" Margin="0,-6,0,-10"><Run Text="Consultorio"/><LineBreak/><Run Text="         "/><Run Language="es-cr" Text="3"/></TextBlock>
             </Border>
             <Border Background="White" CornerRadius="10" Margin="5" Padding="10"
                     MouseLeftButtonUp="Consultorio_Click" Tag="4">
-                <TextBlock Text="Consultorio" FontWeight="Bold" HorizontalAlignment="Center"/>
+                <TextBlock FontWeight="Bold" HorizontalAlignment="Center" Margin="0,-6,0,-10"><Run Text="Consultorio"/><LineBreak/><Run Text="         "/><Run Language="es-cr" Text="4"/></TextBlock>
             </Border>
             <Border Background="White" CornerRadius="10" Margin="5" Padding="10"
                     MouseLeftButtonUp="Consultorio_Click" Tag="5">
-                <TextBlock Text="Consultorio" FontWeight="Bold" HorizontalAlignment="Center"/>
+                <TextBlock FontWeight="Bold" HorizontalAlignment="Center" Margin="0,-6,0,-10"><Run Text="Consultorio"/><LineBreak/><Run Text="         "/><Run Language="es-cr" Text="5"/></TextBlock>
             </Border>
             <Border Background="White" CornerRadius="10" Margin="5" Padding="10"
                     MouseLeftButtonUp="Consultorio_Click" Tag="6">
-                <TextBlock Text="Consultorio" FontWeight="Bold" HorizontalAlignment="Center"/>
+                <TextBlock FontWeight="Bold" HorizontalAlignment="Center" Margin="0,-6,0,-10"><Run Text="Consultorio"/><LineBreak/><Run Text="         "/><Run Language="es-cr" Text="6"/></TextBlock>
             </Border>
             <Border Background="White" CornerRadius="10" Margin="5" Padding="10"
                     MouseLeftButtonUp="Consultorio_Click" Tag="7">
-                <TextBlock Text="Consultorio" FontWeight="Bold" HorizontalAlignment="Center"/>
+                <TextBlock FontWeight="Bold" HorizontalAlignment="Center" Margin="0,-6,0,-10"><Run Text="Consultorio"/><LineBreak/><Run Text="         "/><Run Language="es-cr" Text="7"/></TextBlock>
             </Border>
             <Border Background="White" CornerRadius="10" Margin="5" Padding="10"
                     MouseLeftButtonUp="Consultorio_Click" Tag="8">
-                <TextBlock Text="Consultorio" FontWeight="Bold" HorizontalAlignment="Center"/>
+                <TextBlock FontWeight="Bold" HorizontalAlignment="Center" Margin="0,-6,0,-10"><Run Text="Consultorio"/><LineBreak/><Run Text="         "/><Run Language="es-cr" Text="8"/></TextBlock>
             </Border>
             <Border Background="White" CornerRadius="10" Margin="5" Padding="10"
                     MouseLeftButtonUp="Consultorio_Click" Tag="9">
-                <TextBlock Text="Consultorio" FontWeight="Bold" HorizontalAlignment="Center"/>
+                <TextBlock FontWeight="Bold" HorizontalAlignment="Center" Margin="0,-6,0,-10"><Run Text="Consultorio"/><LineBreak/><Run Text="         "/><Run Language="es-cr" Text="9"/></TextBlock>
             </Border>
             <Border Background="White" CornerRadius="10" Margin="5" Padding="10"
                     MouseLeftButtonUp="Consultorio_Click" Tag="10">
-                <TextBlock Text="Consultorio" FontWeight="Bold" HorizontalAlignment="Center"/>
+                <TextBlock FontWeight="Bold" HorizontalAlignment="Center" Margin="0,-6,0,-10"><Run Text="Consultorio"/><LineBreak/><Run Text="         "/><Run Language="es-cr" Text="10"/></TextBlock>
             </Border>
             <Border Background="White" CornerRadius="10" Margin="5" Padding="10"
                     MouseLeftButtonUp="Consultorio_Click" Tag="11">
-                <TextBlock Text="Consultorio" FontWeight="Bold" HorizontalAlignment="Center"/>
+                <TextBlock FontWeight="Bold" HorizontalAlignment="Center" Margin="0,-6,0,-10"><Run Text="Consultorio"/><LineBreak/><Run Text="         "/><Run Language="es-cr" Text="11"/></TextBlock>
             </Border>
             <Border Background="White" CornerRadius="10" Margin="5" Padding="10"
                     MouseLeftButtonUp="Consultorio_Click" Tag="12">
-                <TextBlock Text="Consultorio" FontWeight="Bold" HorizontalAlignment="Center"/>
+                <TextBlock FontWeight="Bold" HorizontalAlignment="Center" Margin="0,-6,0,-10"><Run Text="Consultorio"/><LineBreak/><Run Text="         "/><Run Language="es-cr" Text="12"/></TextBlock>
             </Border>
             <Border Background="White" CornerRadius="10" Margin="5" Padding="10"
                     MouseLeftButtonUp="Consultorio_Click" Tag="13">
-                <TextBlock Text="Consultorio" FontWeight="Bold" HorizontalAlignment="Center"/>
+                <TextBlock FontWeight="Bold" HorizontalAlignment="Center" Margin="0,-6,0,-10"><Run Text="Consultorio"/><LineBreak/><Run Text="         "/><Run Language="es-cr" Text="13"/></TextBlock>
             </Border>
             <Border Background="White" CornerRadius="10" Margin="5" Padding="10"
                     MouseLeftButtonUp="Consultorio_Click" Tag="14">
-                <TextBlock Text="Consultorio" FontWeight="Bold" HorizontalAlignment="Center"/>
+                <TextBlock FontWeight="Bold" HorizontalAlignment="Center" Margin="0,-6,0,-10"><Run Text="Consultorio"/><LineBreak/><Run Text="         "/><Run Language="es-cr" Text="14"/></TextBlock>
             </Border>
             <Border Background="White" CornerRadius="10" Margin="5" Padding="10"
                     MouseLeftButtonUp="Consultorio_Click" Tag="15">
-                <TextBlock Text="Consultorio" FontWeight="Bold" HorizontalAlignment="Center"/>
+                <TextBlock FontWeight="Bold" HorizontalAlignment="Center" Margin="0,-6,0,-10"><Run Text="Consultorio"/><LineBreak/><Run Text="         "/><Run Language="es-cr" Text="15"/></TextBlock>
             </Border>
         </UniformGrid>
+
+                   
 
         <!-- Border verde inferior (debe ir ANTES del panel blanco para quedar debajo) -->
         <Border Background="#6AA169" Height="220" VerticalAlignment="Bottom" Margin="0,0,0,0">
@@ -188,21 +190,143 @@
         <Border Margin="21,150,20,220" Background="White" CornerRadius="20" BorderBrush="#B7B7B7" BorderThickness="6">
             <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
                 <UniformGrid x:Name="GridConsultorios" Rows="1" Columns="15">
-                    <ListBox x:Name="lstConsultorio1" Width="72" Height="540" ItemTemplate="{StaticResource PacienteTemplate}"/>
-                    <ListBox x:Name="lstConsultorio2" Width="72" Height="540" ItemTemplate="{StaticResource PacienteTemplate}"/>
-                    <ListBox x:Name="lstConsultorio3" Width="72" Height="540" ItemTemplate="{StaticResource PacienteTemplate}"/>
-                    <ListBox x:Name="lstConsultorio4" Width="72" Height="540" ItemTemplate="{StaticResource PacienteTemplate}"/>
-                    <ListBox x:Name="lstConsultorio5" Width="72" Height="540" ItemTemplate="{StaticResource PacienteTemplate}"/>
-                    <ListBox x:Name="lstConsultorio6" Width="72" Height="540" ItemTemplate="{StaticResource PacienteTemplate}"/>
-                    <ListBox x:Name="lstConsultorio7" Width="72" Height="540" ItemTemplate="{StaticResource PacienteTemplate}"/>
-                    <ListBox x:Name="lstConsultorio8" Width="72" Height="540" ItemTemplate="{StaticResource PacienteTemplate}"/>
-                    <ListBox x:Name="lstConsultorio9" Width="72" Height="540" ItemTemplate="{StaticResource PacienteTemplate}"/>
-                    <ListBox x:Name="lstConsultorio10" Width="72" Height="540" ItemTemplate="{StaticResource PacienteTemplate}"/>
-                    <ListBox x:Name="lstConsultorio11" Width="72" Height="540" ItemTemplate="{StaticResource PacienteTemplate}"/>
-                    <ListBox x:Name="lstConsultorio12" Width="72" Height="540" ItemTemplate="{StaticResource PacienteTemplate}"/>
-                    <ListBox x:Name="lstConsultorio13" Width="72" Height="540" ItemTemplate="{StaticResource PacienteTemplate}"/>
-                    <ListBox x:Name="lstConsultorio14" Width="72" Height="540" ItemTemplate="{StaticResource PacienteTemplate}"/>
-                    <ListBox x:Name="lstConsultorio15" Width="72" Height="540" ItemTemplate="{StaticResource PacienteTemplate}"/>
+                    <StackPanel>
+                        <TextBlock x:Name="txtTiempoConsultorio1" 
+                            Foreground="DarkBlue" 
+                            FontWeight="Bold"
+                            HorizontalAlignment="Center"
+                            Visibility="Collapsed"/>
+                        <ListBox x:Name="lstConsultorio1" Width="72" Height="540" ItemTemplate="{StaticResource PacienteTemplate}"/>
+                    </StackPanel>
+
+                    <StackPanel>
+                        <TextBlock x:Name="txtTiempoConsultorio2" 
+                            Foreground="DarkBlue" 
+                            FontWeight="Bold"
+                            HorizontalAlignment="Center"
+                            Visibility="Collapsed"/>
+                        <ListBox x:Name="lstConsultorio2" Width="72" Height="540" ItemTemplate="{StaticResource PacienteTemplate}"/>
+                    </StackPanel>
+                    
+                    <StackPanel>
+                        <TextBlock x:Name="txtTiempoConsultorio3" 
+                            Foreground="DarkBlue" 
+                            FontWeight="Bold"
+                            HorizontalAlignment="Center"
+                            Visibility="Collapsed"/>
+                        <ListBox x:Name="lstConsultorio3" Width="72" Height="540" ItemTemplate="{StaticResource PacienteTemplate}"/>
+                    </StackPanel>
+                        
+                    <StackPanel>    
+                        <TextBlock x:Name="txtTiempoConsultorio4" 
+                            Foreground="DarkBlue" 
+                            FontWeight="Bold"
+                            HorizontalAlignment="Center"
+                            Visibility="Collapsed"/>
+                        <ListBox x:Name="lstConsultorio4" Width="72" Height="540" ItemTemplate="{StaticResource PacienteTemplate}"/>
+                    </StackPanel>
+                    
+                    <StackPanel>
+                        <TextBlock x:Name="txtTiempoConsultorio5" 
+                            Foreground="DarkBlue" 
+                            FontWeight="Bold"
+                            HorizontalAlignment="Center"
+                            Visibility="Collapsed"/>
+                        <ListBox x:Name="lstConsultorio5" Width="72" Height="540" ItemTemplate="{StaticResource PacienteTemplate}"/>
+                    </StackPanel>
+
+                    <StackPanel>
+                         <TextBlock x:Name="txtTiempoConsultorio6" 
+                             Foreground="DarkBlue" 
+                             FontWeight="Bold"
+                             HorizontalAlignment="Center"
+                             Visibility="Collapsed"/>
+                         <ListBox x:Name="lstConsultorio6" Width="72" Height="540" ItemTemplate="{StaticResource PacienteTemplate}"/>
+                    </StackPanel>
+                            
+                    <StackPanel>
+                        <TextBlock x:Name="txtTiempoConsultorio7" 
+                            Foreground="DarkBlue" 
+                            FontWeight="Bold"
+                            HorizontalAlignment="Center"
+                            Visibility="Collapsed"/>
+                        <ListBox x:Name="lstConsultorio7" Width="72" Height="540" ItemTemplate="{StaticResource PacienteTemplate}"/>
+                    </StackPanel>
+                    
+                    <StackPanel>
+                        <TextBlock x:Name="txtTiempoConsultorio8" 
+                            Foreground="DarkBlue" 
+                            FontWeight="Bold"
+                            HorizontalAlignment="Center"
+                            Visibility="Collapsed"/>
+                        <ListBox x:Name="lstConsultorio8" Width="72" Height="540" ItemTemplate="{StaticResource PacienteTemplate}"/>
+                    </StackPanel>
+                    
+                     
+                   <StackPanel>
+                       <TextBlock x:Name="txtTiempoConsultorio9" 
+                           Foreground="DarkBlue" 
+                           FontWeight="Bold"
+                           HorizontalAlignment="Center"
+                           Visibility="Collapsed"/>
+                       <ListBox x:Name="lstConsultorio9" Width="72" Height="540" ItemTemplate="{StaticResource PacienteTemplate}"/>
+                   </StackPanel>
+                    
+                   <StackPanel>
+                       <TextBlock x:Name="txtTiempoConsultorio10" 
+                           Foreground="DarkBlue" 
+                           FontWeight="Bold"
+                           HorizontalAlignment="Center"
+                           Visibility="Collapsed"/>
+                       <ListBox x:Name="lstConsultorio10" Width="72" Height="540" ItemTemplate="{StaticResource PacienteTemplate}"/>
+                   </StackPanel>
+                        
+                   <StackPanel>
+                        <TextBlock x:Name="txtTiempoConsultorio11" 
+                           Foreground="DarkBlue" 
+                           FontWeight="Bold"
+                           HorizontalAlignment="Center"
+                           Visibility="Collapsed"/>
+                       <ListBox x:Name="lstConsultorio11" Width="72" Height="540" ItemTemplate="{StaticResource PacienteTemplate}"/>
+                   </StackPanel>
+                        
+                   <StackPanel>
+                       <TextBlock x:Name="txtTiempoConsultorio12" 
+                           Foreground="DarkBlue" 
+                           FontWeight="Bold"
+                           HorizontalAlignment="Center"
+                           Visibility="Collapsed"/>
+                       <ListBox x:Name="lstConsultorio12" Width="72" Height="540" ItemTemplate="{StaticResource PacienteTemplate}"/>
+                   </StackPanel>
+                       
+                   <StackPanel>
+                       <TextBlock x:Name="txtTiempoConsultorio13" 
+                           Foreground="DarkBlue" 
+                           FontWeight="Bold"
+                           HorizontalAlignment="Center"
+                           Visibility="Collapsed"/>
+                       <ListBox x:Name="lstConsultorio13" Width="72" Height="540" ItemTemplate="{StaticResource PacienteTemplate}"/>
+                   </StackPanel>
+                    
+                   <StackPanel>
+                        <TextBlock x:Name="txtTiempoConsultorio14" 
+                           Foreground="DarkBlue" 
+                           FontWeight="Bold"
+                           HorizontalAlignment="Center"
+                           Visibility="Collapsed"/>
+                       <ListBox x:Name="lstConsultorio14" Width="72" Height="540" ItemTemplate="{StaticResource PacienteTemplate}"/>
+                   </StackPanel>
+                       
+                   <StackPanel>
+                        <TextBlock x:Name="txtTiempoConsultorio15" 
+                           Foreground="DarkBlue" 
+                           FontWeight="Bold"
+                           HorizontalAlignment="Center"
+                           Visibility="Collapsed"/>
+                       <ListBox x:Name="lstConsultorio15" Width="72" Height="540" ItemTemplate="{StaticResource PacienteTemplate}"/>
+                   </StackPanel>
+                       
+                    
                 </UniformGrid>
             </ScrollViewer>
         </Border>

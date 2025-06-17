@@ -21,6 +21,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 
+
 namespace ProyectoAnalisis.Vistas
 {
     public partial class VentanaPrincipal : Window
@@ -30,9 +31,11 @@ namespace ProyectoAnalisis.Vistas
         private List<Consultorios> consultoriosOptimizados;
         public bool optimizacionEnCurso = false;
         private CancellationTokenSource optimizacionCts;
+        private DispatcherTimer timerPrioridades;
         public VentanaPrincipal()
         {
             InitializeComponent();
+            IniciarTimerPrioridades();
         }
 
         private void btnCargarDatos_Click(object sender, RoutedEventArgs e)
@@ -146,7 +149,7 @@ namespace ProyectoAnalisis.Vistas
 
         private void ActualizarColasConsultorios(List<Consultorios> consultorios)
         {
-            
+
             List<ListBox> listBoxes = new List<ListBox>
             {
                 lstConsultorio1, lstConsultorio2, lstConsultorio3, lstConsultorio4, lstConsultorio5,
@@ -154,20 +157,80 @@ namespace ProyectoAnalisis.Vistas
                 lstConsultorio11, lstConsultorio12, lstConsultorio13, lstConsultorio14, lstConsultorio15
             };
 
-            // Limpia todos los listbox primero
-            foreach (var lb in listBoxes)
-                lb.ItemsSource = null;
+            // Lista correspondiente de TextBlocks para mostrar la duración
+            List<TextBlock> tiempoTextBlocks = new List<TextBlock>
+            {
+                txtTiempoConsultorio1, txtTiempoConsultorio2, txtTiempoConsultorio3, txtTiempoConsultorio4, txtTiempoConsultorio5,
+                txtTiempoConsultorio6, txtTiempoConsultorio7, txtTiempoConsultorio8, txtTiempoConsultorio9, txtTiempoConsultorio10,
+                txtTiempoConsultorio11, txtTiempoConsultorio12, txtTiempoConsultorio13, txtTiempoConsultorio14, txtTiempoConsultorio15
+            };
+
+            // Limpia todos los listbox y oculta los tiempos primero
+            for (int i = 0; i < listBoxes.Count; i++)
+            {
+                listBoxes[i].ItemsSource = null;
+                if (i < tiempoTextBlocks.Count && tiempoTextBlocks[i] != null)
+                {
+                    tiempoTextBlocks[i].Text = "";
+                    tiempoTextBlocks[i].Visibility = Visibility.Collapsed;
+                }
+            }
 
             // Asigna cada consultorio a su listbox según el identificador
             foreach (var consultorio in consultorios)
             {
-                int idx = consultorio.NumeroConsultorio - 1; 
+                int idx = consultorio.NumeroConsultorio - 1;
                 if (idx >= 0 && idx < listBoxes.Count)
                 {
-                    listBoxes[idx].ItemsSource = null;
+                    // Actualiza la cola de pacientes
                     listBoxes[idx].ItemsSource = consultorio.ColaPacientes;
+
+                    // Actualiza el TextBlock de tiempo si existe y el consultorio está activo
+                    if (idx < tiempoTextBlocks.Count && tiempoTextBlocks[idx] != null && consultorio.Activo)
+                    {
+                        tiempoTextBlocks[idx].Text = consultorio.ObtenerTiempoEsperaFormateado();
+                        tiempoTextBlocks[idx].Visibility = Visibility.Visible;
+                    }
                 }
             }
+        }
+
+        private void IniciarTimerPrioridades()
+        {
+            timerPrioridades = new DispatcherTimer();
+            timerPrioridades.Interval = TimeSpan.FromSeconds(10); // Actualizar cada 10 segundos
+            timerPrioridades.Tick += ActualizarPrioridadesPacientes;
+            timerPrioridades.Start();
+        }
+
+        private void ActualizarPrioridadesPacientes(object sender, EventArgs e)
+        {
+            var pacientesEnEspera = LogicaVistaMain.ObtenerPacientesEnEspera();
+            if (pacientesEnEspera.Count == 0) return;
+
+            var consultorios = LogicaVistaMain.ObtenerConsultorios();
+
+            // Incrementar prioridad para cada paciente
+            foreach (var paciente in pacientesEnEspera)
+            {
+                // Verificar si hay algún consultorio activo para su especialidad
+                bool especialidadDisponible = false;
+                foreach (var especialidad in paciente.Paciente.Especialidades)
+                {
+                    if (consultorios.Any(c => c.Activo && c.Especialidades.Any(ec => ec.Nombre == especialidad.Nombre)))
+                    {
+                        especialidadDisponible = true;
+                        break;
+                    }
+                }
+
+                // Aumentar prioridad según disponibilidad
+                paciente.IncrementarPrioridad(especialidadDisponible);
+            }
+
+            // Actualizar interfaz
+            ActualizarListaEspera();
+
         }
         public async Task ReoptimizarYAtender()
         {
@@ -313,6 +376,10 @@ namespace ProyectoAnalisis.Vistas
                 }).ToList();
 
             await Task.WhenAll(tareas);
+            optimizacionEnCurso = false;
+            btnOptimizar.IsEnabled = true;
+            btnOptimizar.Content = "Optimizar";
+            btnOptimizar.Background = Brushes.Green;
         }
         private async void btnIniciarOptimizacion_Click(object sender, RoutedEventArgs e)
         {
@@ -321,10 +388,7 @@ namespace ProyectoAnalisis.Vistas
             btnOptimizar.Content = "Optimizando...";
             btnOptimizar.Background = Brushes.LightGray;
             await ReoptimizarYAtender();
-            optimizacionEnCurso = false;
-            btnOptimizar.IsEnabled = true;
-            btnOptimizar.Content = "Optimizar";
-            btnOptimizar.Background = Brushes.Green;
+            
 
         }
     }
