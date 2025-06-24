@@ -8,6 +8,8 @@ namespace ProyectoAnalisis.Logica
 {
     public class PacientesEnEspera
     {
+        // Constructor que crea un paciente en espera, asignandole su imagen y su primera especialidad pendiente
+        // Tambien deja el tiempo de espera y la prioridad en cero al inicio
         public PacientesEnEspera(Pacientes paciente, string imagen)
         {
             Paciente = paciente;
@@ -23,7 +25,9 @@ namespace ProyectoAnalisis.Logica
         public int TiempoEspera { get; set; }
         public int Prioridad { get; set; }
 
-        // Método para aumentar la prioridad basado en el tiempo de espera
+        // Metodo para aumentar la prioridad basado en el tiempo de espera
+        // Cada vez que se llama, aumenta el tiempo de espera y sube la prioridad
+        // Si no hay una especialidad disponible, la prioridad sube aun mas rapido
         public void IncrementarPrioridad(bool especialidadDisponible)
         {
             TiempoEspera++;

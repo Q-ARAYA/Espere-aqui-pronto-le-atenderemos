@@ -13,6 +13,8 @@ namespace ProyectoAnalisis.LogicaSistema
         {
             public List<Consultorios> Consultorios { get; set; } = new List<Consultorios>();
 
+            // Metodo que agrega un nuevo consultorio al sistema, si no se ha llegado al limite de 15
+            // Le pone un numero automatico y lo deja activo por defecto
             public void AgregarConsultorio(string nombre)
             {
                 if (Consultorios.Count < 15)
@@ -22,6 +24,8 @@ namespace ProyectoAnalisis.LogicaSistema
                 }
             }
 
+            // Metodo que cierra un consultorio cambiando su estado a inactivo
+            // Lo busca por el nombre
             public void CerrarConsultorio(string nombre)
             {
                 var consultorio = Consultorios.Find(c => c.Nombre == nombre);
@@ -29,6 +33,7 @@ namespace ProyectoAnalisis.LogicaSistema
                     consultorio.Activo = false;
             }
 
+            // Este metodo agrega una especialidad nueva al consultorio indicado
             public void AgregarEspecialidad(string nombreConsultorio, Especialidades nuevaEspecialidad)
             {
                 var consultorio = Consultorios.Find(c => c.Nombre == nombreConsultorio);
@@ -36,6 +41,7 @@ namespace ProyectoAnalisis.LogicaSistema
                     consultorio.Especialidades.Add(nuevaEspecialidad);
             }
 
+            // Metodo que elimina una especialidad del consultorio, buscandola por su nombre
             public void QuitarEspecialidad(string nombreConsultorio, string nombreEspecialidad)
             {
                 var consultorio = Consultorios.Find(c => c.Nombre == nombreConsultorio);

@@ -10,6 +10,8 @@ namespace ProyectoAnalisis.Logica
     public class CargaDatos
     {
         // Especialidades
+        // Lee un archivo XML con informacion de especialidades y las carga en la aplicacion
+        // Recibe la ruta del archivo como texto y devuelve una lista con las especialidades que se cargaron correctamente
         public static List<Especialidades> CargarEspecialidadesDesdeXML(string rutaArchivo)
         {
             List<Especialidades> especialidades = new List<Especialidades>();
@@ -45,6 +47,8 @@ namespace ProyectoAnalisis.Logica
         }
 
         // Pacientes
+        // Carga pacientes desde un archivo XML y los agrega a la lista del sistema
+        // Recibe la ruta del archivo y una lista de especialidades ya cargadas, y devuelve una lista con los pacientes que se crearon
         public static List<Pacientes> CargarPacientesDesdeXML(string rutaArchivo, List<Especialidades> listaEspecialidades)
         {
             List<Pacientes> pacientes = new List<Pacientes>();

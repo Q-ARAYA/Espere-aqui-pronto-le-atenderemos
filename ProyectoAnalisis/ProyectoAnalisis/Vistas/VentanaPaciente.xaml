@@ -2,24 +2,38 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Agregar Paciente" Height="300" Width="400" WindowStartupLocation="CenterScreen">
+
+    <!-- Contenedor principal con margenes -->
     <Grid Margin="20">
+
+        <!-- Distribucion en filas para nombre, especialidad y boton -->
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/> <!-- Campo del nombre -->
+            <RowDefinition Height="Auto"/> <!-- Lista especialidades -->
+            <RowDefinition Height="Auto"/> <!-- Boton agregar -->
+            <RowDefinition Height="*"/> <!-- Espaci vacio si se quiere expandir -->
         </Grid.RowDefinitions>
+
+        <!-- Columnas: una para etiquetas, otra para campos -->
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/> <!-- Etiquetas -->
+            <ColumnDefinition Width="*"/> <!-- Entradas de datos -->
         </Grid.ColumnDefinitions>
 
+        <!-- Etiqueta para el campo de nombre -->
         <TextBlock Text="Nombre:" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,10,10"/>
+
+        <!-- Caja de texto para escribir el nombre del paciente -->
         <TextBox x:Name="txtNombre" Grid.Row="0" Grid.Column="1" Margin="0,0,0,10"/>
 
+        <!-- Etiqueta para seleccionar especialidades -->
         <TextBlock Text="Especialidad:" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,10,10"/>
+
+        <!-- Lista de especialidades disponibles (seleccion multiple) -->
         <ListBox x:Name="lstEspecialidades" Grid.Row="1" Grid.Column="1" Margin="0,0,0,10" SelectionMode="Multiple"/>
 
+
+        <!-- Boton que agrega el paciente con la info ingresada -->
         <Button Content="Agregar" Grid.Row="2" Grid.ColumnSpan="2" Height="35" Margin="0,10,0,0"
                 Click="BtnAgregar_Click" Background="#6AA169" Foreground="White" FontWeight="Bold"/>
     </Grid>

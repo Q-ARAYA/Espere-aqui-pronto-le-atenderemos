@@ -8,6 +8,7 @@ namespace ProyectoAnalisis.Logica
 {
     public class Pacientes
     {
+        // Constructor que se encarga de crear un paciente con su id, nombre y la lista de especialidades que necesita
         public Pacientes(int id, string nombre, List<Especialidades> especialidades)
         {
             pacienteID = id;

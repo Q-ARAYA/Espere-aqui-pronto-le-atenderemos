@@ -4,12 +4,16 @@
         Title="Consultorios" Height="750" Width="1440" Background="#3B5C7E">
 
     <Window.Resources>
+
+        <!-- Plantilla visual para mostrar cada paciente en la lista -->
+        <!-- Muestra la imagen, el nombre y un tooltip con sus especialidades -->
         <DataTemplate x:Key="PacienteTemplate">
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center"
                         ToolTipService.ShowDuration="10000">
                 <Image Source="{Binding Imagen}" Width="60" Height="60" Margin="2"/>
                 <TextBlock Text="{Binding Paciente.Nombre}" HorizontalAlignment="Center"/>
                 <StackPanel.ToolTip>
+                    <!-- Muestra todas las especialidades del paciente en el tooltip -->
                     <ItemsControl ItemsSource="{Binding Paciente.Especialidades}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
@@ -22,7 +26,9 @@
         </DataTemplate>
     </Window.Resources>
     <Grid>
-        <!-- Título superior -->
+
+        <!-- Titulo principal de la ventana -->
+        <!-- Da un mensaje de bienvenida al usuario -->
         <TextBlock Text="Espere aquí pronto le atenderemos"
                    FontSize="32"
                    FontFamily="Comic Sans MS"
@@ -30,7 +36,9 @@
                    Margin="30,20,0,0"
                    HorizontalAlignment="Left"
                    VerticalAlignment="Top"/>
-        <!-- Botones superiores alineados a la derecha -->
+
+        <!-- Panel con los botones principales del sistema -->
+        <!-- Cargar datos, abrir pacientes, abrir especialidades y optimizar -->
         <StackPanel Orientation="Horizontal"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Top"
@@ -80,9 +88,11 @@
                     BorderThickness="0"
                     Cursor="Hand"
                     Click="btnIniciarOptimizacion_Click"/>
+            <!-- Cada boton tiene su evento Click configurado -->
         </StackPanel>
 
-        <!-- Consultorios (cabecera) -->
+        <!-- Cabecera con los nombres de los consultorios -->
+        <!-- Se muestra como una fila con 15 bloques, cada uno representa un consultorio -->
         <UniformGrid x:Name ="CabeceraConsultorios" Rows="1" Columns="15" Margin="30,80,30,0" Height="60" VerticalAlignment="Top">
             <Border Background="White" CornerRadius="10" Margin="5" Padding="10"
                     MouseLeftButtonUp="Consultorio_Click" Tag="1">
@@ -144,20 +154,24 @@
                     MouseLeftButtonUp="Consultorio_Click" Tag="15">
                 <TextBlock FontWeight="Bold" HorizontalAlignment="Center" Margin="0,-6,0,-10"><Run Text="Consultorio"/><LineBreak/><Run Text="         "/><Run Language="es-cr" Text="15"/></TextBlock>
             </Border>
+            <!-- Cada Border representa un consultorio que se puede seleccionar con clic -->
         </UniformGrid>
 
-                   
 
-        <!-- Border verde inferior (debe ir ANTES del panel blanco para quedar debajo) -->
+
+        <!-- Fondo verde con una franja gris para mostrar la lista de espera -->
+        <!-- Contiene una lista horizontal de los pacientes esperando -->
         <Border Background="#6AA169" Height="220" VerticalAlignment="Bottom" Margin="0,0,0,0">
             <Border Background="#B7B7B7" Height="92" VerticalAlignment="Top" Margin="0,71,0,0">
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10,0,0,0" Height="72">
                     <TextBlock Text="&#xE823;" FontFamily="Segoe MDL2 Assets" FontSize="28" Margin="0,0,10,0"/>
                     <TextBlock Text="Lista de espera" FontSize="18" VerticalAlignment="Center" Margin="0,0,30,0"/>
+                    <!-- Icono, texto y lista de pacientes en espera -->
                     <ListBox x:Name="lstEspera" Height="74" 
                              Background="#B7B7B7" BorderThickness="0" SelectionChanged="lstEspera_SelectionChanged" Width="1618"
                              ScrollViewer.HorizontalScrollBarVisibility="Auto"
                              ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                        <!-- Se usa WrapPanel para mostrar los pacientes uno junto al otro -->
                         <ListBox.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <WrapPanel Orientation="Horizontal"/>
@@ -186,10 +200,12 @@
             </Border>
         </Border>
 
-        <!-- Panel principal de consultorios y pacientes -->
+        <!-- Panel principal con los consultorios y sus pacientes -->
+        <!-- Muestra 15 columnas, una por consultorio, con lista de pacientes y tiempos -->
         <Border Margin="21,150,20,220" Background="White" CornerRadius="20" BorderBrush="#B7B7B7" BorderThickness="6">
             <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
                 <UniformGrid x:Name="GridConsultorios" Rows="1" Columns="15">
+                    <!-- Cada StackPanel tiene un texto con el tiempo total y una lista de pacientes -->
                     <StackPanel>
                         <TextBlock x:Name="txtTiempoConsultorio1" 
                             Foreground="DarkBlue" 

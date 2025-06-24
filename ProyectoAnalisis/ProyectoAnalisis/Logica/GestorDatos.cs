@@ -6,8 +6,8 @@ namespace ProyectoAnalisis.Logica
 {
     public static class GestorDatos
     {
-        // Esta es la lista "maestra" de todas las especialidades en tu sistema.
-        // Es privada para que solo se pueda modificar a través de los métodos de esta clase.
+        // Lista "maestra" de todas las especialidades en el sistema
+        // Es privada para que solo se pueda modificar a traves de los métodos de esta clase
         private static List<Especialidades> listaDeEspecialidades = new List<Especialidades>();
 
         /// <summary>
@@ -15,9 +15,11 @@ namespace ProyectoAnalisis.Logica
         /// </summary>
         /// <param name="especialidad">La especialidad a agregar.</param>
         /// <returns>True si se agregó, False si ya existía una con el mismo nombre.</returns>
+        // Sirve para agregar una especialidad a la lista si no existe otra con el mismo nombre
+        // Devuelve true si se agrego, y false si ya estaba registrada
         public static bool AgregarEspecialidad(Especialidades especialidad)
         {
-            // Verificación para no tener nombres duplicados (buena práctica)
+            // Verificacion para no tener nombres duplicados
             if (listaDeEspecialidades.Any(e => e.Nombre.Equals(especialidad.Nombre, System.StringComparison.OrdinalIgnoreCase)))
             {
                 return false; // Ya existe, no se agrega.
@@ -31,6 +33,8 @@ namespace ProyectoAnalisis.Logica
         /// Devuelve una copia de la lista de todas las especialidades.
         /// </summary>
         /// <returns>Una lista de especialidades.</returns>
+        // Devuelve una nueva lista con todas las especialidades guardadas
+        // Se devuelve una copia para evitar que modifiquen la lista original desde fuera
         public static List<Especialidades> ObtenerEspecialidades()
         {
             // Devolvemos una nueva lista para que la lista original no pueda ser modificada desde fuera.

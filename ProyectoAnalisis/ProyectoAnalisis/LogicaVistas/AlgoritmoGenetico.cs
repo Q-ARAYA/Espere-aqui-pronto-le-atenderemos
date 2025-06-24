@@ -18,7 +18,8 @@ namespace ProyectoAnalisis.LogicaVistas
         public List<AsignacionPaciente> Asignaciones { get; set; } = new List<AsignacionPaciente>();
         public double Fitness { get; set; }
 
-        // Método para obtener las colas organizadas por consultorio
+        // Funcion que organiza las asignaciones por consultorio y las devuelve agrupadas
+        // Lo hace agrupando por numero de consultorio y ordenandolas segun el orden en cola
         public Dictionary<int, List<AsignacionPaciente>> ObtenerColasPorConsultorio()
         {
             return Asignaciones
@@ -32,6 +33,8 @@ namespace ProyectoAnalisis.LogicaVistas
 
     public static class AlgoritmoGenetico
     {
+        // Funcion principal que optimiza la asignacion de pacientes usando algoritmo genetico
+        // Lo hace creando una poblacion inicial y aplicando seleccion, cruce y mutacion por varias generaciones
         public static List<List<AsignacionPaciente>> Optimizar(
             List<PacientesEnEspera> pacientes,
             List<Consultorios> consultorios,
@@ -49,7 +52,7 @@ namespace ProyectoAnalisis.LogicaVistas
                 poblacion.Add(individuo);
             }
 
-            // Evolución
+            // Evolucion del algoritmo
             for (int gen = 0; gen < generaciones; gen++)
             {
                 // Selección por torneo
@@ -87,6 +90,8 @@ namespace ProyectoAnalisis.LogicaVistas
             return mejorSolucion.ObtenerColasPorConsultorio().Values.ToList();
         }
 
+        // Funcion que crea a un individuo aleatorio con asignaciones validas
+        // Lo hace eligiendo consultorios compatibles para cada especialidad de cada paciente
         private static Individuo CrearIndividuoAleatorio(
             List<PacientesEnEspera> pacientes,
             List<Consultorios> consultorios,
@@ -130,6 +135,8 @@ namespace ProyectoAnalisis.LogicaVistas
             return individuo;
         }
 
+        // Funcion que mezcla el orden de atencion de cada consultorio de forma aleatoria
+        // Lo hace aplicando swaps y luego reordenando los indices
         private static void MezclarOrdenesAleatoriamente(Individuo individuo, Random rnd)
         {
             var colasPorConsultorio = individuo.ObtenerColasPorConsultorio();
@@ -153,6 +160,8 @@ namespace ProyectoAnalisis.LogicaVistas
             }
         }
 
+        // Evalua la calidad de un individuo
+        // Lo hace simulando los tiempos de atencion, penalizando errores y sumando el tiempo total
         private static double CalcularFitness(Individuo individuo)
         {
             double penalizacion = 0;
@@ -262,6 +271,8 @@ namespace ProyectoAnalisis.LogicaVistas
             return tiempoFinal + penalizacion;
         }
 
+        // Selecciona individuos por torneo
+        // Eligiendo varios al azar y quedandose con el mejor
         private static List<Individuo> SeleccionPorTorneo(List<Individuo> poblacion, int cantidad, Random rnd)
         {
             var seleccionados = new List<Individuo>();
@@ -282,6 +293,8 @@ namespace ProyectoAnalisis.LogicaVistas
             return seleccionados;
         }
 
+        // Funcion genera un nuevo individuo combinando dos padres
+        // Heredando asignaciones al azar de cada uno y luego reajustando los ordenes
         private static Individuo Cruce(Individuo padre1, Individuo padre2, Random rnd)
         {
             var hijo = new Individuo();
@@ -329,6 +342,8 @@ namespace ProyectoAnalisis.LogicaVistas
             return hijo;
         }
 
+        // Aplica mutaciones aleatorias al individuo
+        // Puede cambiar consultorios o reordenar colas si se cumple una probabilidad
         private static void Mutacion(Individuo individuo, List<Consultorios> consultorios, Random rnd)
         {
             if (individuo.Asignaciones.Count == 0) return;
@@ -380,6 +395,8 @@ namespace ProyectoAnalisis.LogicaVistas
             }
         }
 
+        // Reajusta los ordenes en cola para que sean secuenciales
+        // Recorriendo cada consultorio y numerando del 0 en adelante
         private static void ReajustarOrdenes(Individuo individuo)
         {
             var colasPorConsultorio = individuo.ObtenerColasPorConsultorio();
@@ -394,6 +411,8 @@ namespace ProyectoAnalisis.LogicaVistas
             }
         }
 
+        // Esta funcion hace una copia exacta de un individuo
+        // Clonando todas sus asignaciones y el valor de fitness
         private static Individuo CopiarIndividuo(Individuo original)
         {
             var copia = new Individuo

@@ -83,6 +83,9 @@ namespace ProyectoAnalisis.LogicaVistas
             return null;
         }
 
+
+        // Funcion que desactiva a un consultorio usando su numero
+        // Buscandolo en la lista y cambiando su estado activo a false
         public static void DesactivarConsultorio(int numeroConsultorio)
         {
             var consultorio = listaDeConsultorios.FirstOrDefault(c => c.NumeroConsultorio == numeroConsultorio);
@@ -101,6 +104,8 @@ namespace ProyectoAnalisis.LogicaVistas
             return new List<Consultorios>(listaDeConsultorios);
         }
 
+        // Esta funcion muestra todos los consultorios en el panel visual
+        // Lo hace limpiando el panel y agregando bloques visuales con color segun si estan activos
         public static void MostrarConsultorios(List<Consultorios> consultorios, WrapPanel panel)
         {
             panel.Children.Clear();
@@ -155,6 +160,8 @@ namespace ProyectoAnalisis.LogicaVistas
             return new List<Pacientes>(listaDePacientes);
         }
 
+        // Esta funcion agrega un paciente a la lista de espera si no esta duplicado
+        // Compara el ID y las especialidades para asegurarse de que no se repita antes de agregarlo
         public static string CrearPacienteEnEspera(Pacientes paciente, string imagen)
         {
             if (paciente == null)
@@ -174,11 +181,15 @@ namespace ProyectoAnalisis.LogicaVistas
             return null; // Todo salió bien
         }
 
+        // Esta funcion devuelve la lista de pacientes que estan en espera
+        // Lo hace devolviendo una nueva lista con los mismos elementos para evitar cambios directos
         public static List<PacientesEnEspera> ObtenerPacientesEnEspera()
         {
             return new List<PacientesEnEspera>(listaDePacientesEnEspera);
         }
 
+        // Esta funcion elimina a un paciente especifico de la lista de espera
+        // Lo hace usando el metodo Remove sobre la lista
         public static void EliminarPacienteEnEspera(PacientesEnEspera paciente)
         {
             listaDePacientesEnEspera.Remove(paciente);

@@ -2,14 +2,18 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Consultorio" Height="400" Width="400" WindowStartupLocation="CenterScreen">
+
+    <!-- Contenedor principal con margen interno -->
     <Grid Margin="20">
+        <!-- Filas para organizar los elementos verticalmente -->
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/> <!-- Boton Activar -->
+            <RowDefinition Height="Auto"/> <!-- Texto de especialidades -->
+            <RowDefinition Height="*"/> <!-- Lista de especialidades -->
         </Grid.RowDefinitions>
 
-        <!-- Botón Activar/Desactivar -->
+        <!-- Boton para activar o desactivar el consultorio -->
+        <!-- Cambia entre "Activar" y "Desactivar" segun el estado -->
         <Button x:Name="btnActivar"
                 Content="Activar"
                 Width="120"
@@ -21,13 +25,15 @@
                 FontWeight="Bold"
                 Grid.Row="0"/>
 
-        <!-- Etiqueta de especialidades -->
+        <!-- Indica al usuario que puede seleccionar especialidades -->
+        <!-- Se limita a un maximo de 5 especialidades -->
         <TextBlock Text="Especialidades (máx. 5):"
                    FontWeight="Bold"
                    Margin="0,0,0,10"
                    Grid.Row="1"/>
 
-        <!-- Lista de especialidades con selección múltiple -->
+        <!-- Lista donde el usuario selecciona las especialidades disponibles -->
+        <!-- Permite seleccionar varias a la vez -->
         <ListBox x:Name="lstEspecialidades"
                  Grid.Row="2"
                  SelectionMode="Multiple"

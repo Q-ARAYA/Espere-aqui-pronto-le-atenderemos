@@ -8,6 +8,7 @@ namespace ProyectoAnalisis.Logica
 {
     public class Especialidades
     {
+        // Crea una nueva especialidad con su nombre y la duracion que tiene
         public Especialidades(string nombre, int duracion)
         {
             Nombre = nombre;

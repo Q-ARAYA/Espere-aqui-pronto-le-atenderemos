@@ -2,27 +2,39 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Especialidades" Height="400" Width="400" WindowStartupLocation="CenterScreen">
+    
+    <!-- Contenedor principal con margenes -->
     <Grid Margin="20">
+        <!-- Filas y columnas para acomodar los campos de texto, el boton y la lista -->
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/> <!-- Nombre -->
+            <RowDefinition Height="Auto"/> <!-- Duracion -->
+            <RowDefinition Height="Auto"/> <!-- Boton -->
+            <RowDefinition Height="*"/> <!-- Lista -->
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/> <!-- Eqituetas -->
+            <ColumnDefinition Width="*"/> <!-- Cajas de texto -->
         </Grid.ColumnDefinitions>
 
+        <!-- Etiqueta para el nombre de la especialidad -->
         <TextBlock Text="Nombre:" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,10,10"/>
+        
+        <!-- Caja donde el usuario escribe el nombre -->
         <TextBox x:Name="txtNombre" Grid.Row="0" Grid.Column="1" Margin="0,0,0,10"/>
 
+        <!-- Etiqueta para la duracion de la especialidad -->
         <TextBlock Text="Duración:" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,10,10"/>
+
+        <!-- Caja para escribir la duracion en minutos -->
         <TextBox x:Name="txtDuracion" Grid.Row="1" Grid.Column="1" Margin="0,0,0,10"/>
 
+        <!-- Boton que permite crear una nueva especialidad -->
+        <!-- Llama a un metodo cuando se hace clic -->
         <Button Content="Crear" Grid.Row="2" Grid.ColumnSpan="2" Height="35" Margin="0,0,0,10"
                 Click="BtnCrear_Click" Background="#6AA169" Foreground="White" FontWeight="Bold"/>
 
+        <!-- Lista que muestra todas las especialidades creadas -->
         <ListBox x:Name="lstEspecialidades" Grid.Row="3" Grid.ColumnSpan="2" />
     </Grid>
 </Window>   

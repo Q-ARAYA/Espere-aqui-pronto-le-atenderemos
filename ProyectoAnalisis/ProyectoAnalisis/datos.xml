@@ -4,6 +4,7 @@
     <Especialidad nombre="Pediatria" duracion="20" />
     <Especialidad nombre="Dermatologia" duracion="25" />
   </Especialidades>
+
   <Pacientes>
     <Paciente id="1" nombre="Alfonso Juarez">
       <Especialidad nombre="Cardiologia" />
@@ -11,6 +12,33 @@
     <Paciente id="2" nombre="Carmen Lira">
       <Especialidad nombre="Pediatria" />
       <Especialidad nombre="Dermatologia" />
+    </Paciente>
+    <Paciente id="3" nombre="Luis Mora">
+      <Especialidad nombre="Dermatologia" />
+    </Paciente>
+    <Paciente id="4" nombre="Julia Mendez">
+      <Especialidad nombre="Cardiologia" />
+      <Especialidad nombre="Pediatria" />
+    </Paciente>
+    <Paciente id="5" nombre="Fernando Reyes">
+      <Especialidad nombre="Cardiologia" />
+    </Paciente>
+    <Paciente id="6" nombre="Gabriela Soto">
+      <Especialidad nombre="Pediatria" />
+    </Paciente>
+    <Paciente id="7" nombre="Ignacio Ruiz">
+      <Especialidad nombre="Dermatologia" />
+      <Especialidad nombre="Cardiologia" />
+    </Paciente>
+    <Paciente id="8" nombre="Daniela Campos">
+      <Especialidad nombre="Pediatria" />
+    </Paciente>
+    <Paciente id="9" nombre="Raul Estrada">
+      <Especialidad nombre="Cardiologia" />
+      <Especialidad nombre="Dermatologia" />
+    </Paciente>
+    <Paciente id="10" nombre="Angela Navarro">
+      <Especialidad nombre="Pediatria" />
     </Paciente>
   </Pacientes>
 </Datos>

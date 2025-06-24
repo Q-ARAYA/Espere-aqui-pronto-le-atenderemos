@@ -11,10 +11,15 @@ namespace ProyectoAnalisis.LogicaSistema
     {
         public Queue<Pacientes> PacientesEnCola { get; set; } = new Queue<Pacientes>();
 
+        // Esta funcion agrega un paciente a la cola
+        // Metiendolo al final usando Enqueue
         public void AgregarPaciente(Pacientes paciente)
         {
             PacientesEnCola.Enqueue(paciente);
         }
+
+        // Funcion para atender al primer paciente en la cola
+        // Sacando el primero con Dequeue, si hay pacientes disponibles
         public Pacientes AtenderPaciente()
         {
             if (PacientesEnCola.Count > 0)
@@ -26,7 +31,9 @@ namespace ProyectoAnalisis.LogicaSistema
                 throw new InvalidOperationException("No hay pacientes en la cola para atender.");
             }
         }
-            
+
+        // Funcion que elimina un paciente especifico de la cola
+        // Crea una nueva cola y copiando todos los que no coincidan con el que se quiere eliminar
         public void EliminarPaciente(Pacientes paciente)
         {
             var nuevaCola = new Queue<Pacientes>();
